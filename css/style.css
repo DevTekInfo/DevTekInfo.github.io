@@ -6,7 +6,7 @@
   font-style: normal; }
 /* =======================================================
 *
-* 	Template Style 
+* 	Template Style
 *
 * ======================================================= */
 body {
@@ -239,7 +239,7 @@ h1, h2, h3, h4, h5, h6, figure {
 #gtco-header {
   position: absolute;
   top: 0;
-  background: #4d4d4d; }
+  background: #4d4d4d;}
   @media screen and (max-width: 992px) {
     #gtco-header.gtco-cover {
       height: inherit !important;
@@ -306,7 +306,8 @@ h1, h2, h3, h4, h5, h6, figure {
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
-  position: relative; }
+  position: relative;
+  background-image: url("../images/gigabytelogo-header.jpg");}
 
 .gtco-bg {
   background-position: center center;

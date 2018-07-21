@@ -1,0 +1,63 @@
+ /* Style the buttons that are used to open and close the accordion panel */
+    .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    .active1, .accordion:hover {
+        background-color: #ccc;
+    }
+
+/* Style the accordion panel. Note: hidden by default */
+    .panel {
+        padding: 0 18px;
+        display: none;
+        background-color: white;
+        overflow: hidden;
+    }
+
+/* Code */
+/***  ***/
+/*
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>| DevTEK &dash; InsertPageTitle |</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="author" content="Devour52k, All template rights - FreeHTML5.co" />
+	<body>
+		<h2>Accordion</h2>
+
+		<button class="accordion">Section 1</button>
+		<div class="panel">
+		  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
+
+		<button class="accordion">Section 2</button>
+		<div class="panel">
+		  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
+
+		<button class="accordion">Section 3</button>
+		<div class="panel">
+		  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
+	</body>
+</html>
+*/
