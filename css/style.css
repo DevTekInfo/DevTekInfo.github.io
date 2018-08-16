@@ -898,51 +898,6 @@ form label {
   #gtco-products .gtco-heading p {
     color: rgba(255, 255, 255, 0.8); }
 
-#gtco-subscribe {
-  background: #66D37E; }
-  #gtco-subscribe .form-control {
-    background: transparent;
-    color: #fff;
-    font-size: 16px !important;
-    width: 100%;
-    border: 2px solid rgba(255, 255, 255, 0.2) !important;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s; }
-    #gtco-subscribe .form-control:focus {
-      background: transparent;
-      border: 2px solid rgba(255, 255, 255, 0.8) !important; }
-    #gtco-subscribe .form-control::-webkit-input-placeholder {
-      color: #fff; }
-    #gtco-subscribe .form-control:-moz-placeholder {
-      /* Firefox 18- */
-      color: #fff; }
-    #gtco-subscribe .form-control::-moz-placeholder {
-      /* Firefox 19+ */
-      color: #fff; }
-    #gtco-subscribe .form-control:-ms-input-placeholder {
-      color: #fff; }
-  #gtco-subscribe .btn {
-    height: 46px;
-    border: none !important;
-    background: #fff;
-    color: #66D37E;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: 400;
-    padding-left: 50px;
-    padding-right: 50px; }
-  #gtco-subscribe .form-inline .form-group {
-    width: 100% !important;
-    margin-bottom: 10px; }
-    #gtco-subscribe .form-inline .form-group .form-control {
-      width: 100%; }
-  #gtco-subscribe .gtco-heading {
-    margin-bottom: 30px; }
-    #gtco-subscribe .gtco-heading h2 {
-      color: #fff; }
-    #gtco-subscribe .gtco-heading p {
-      color: rgba(255, 255, 255, 0.5); }
 
 #gtco-footer {
   padding-top: 10em;
@@ -966,6 +921,7 @@ form label {
         #gtco-footer .gtco-footer-links li a:hover {
           color: #fff !important;
           text-decoration: underline; }
+          
   #gtco-footer .gtco-widget {
     margin-bottom: 30px; }
     #gtco-footer .gtco-widget h3 {
