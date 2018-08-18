@@ -1,0 +1,23 @@
+﻿2018-08-18 11:52:53.679472|INFO    |ServerLibPriv |   |TeamSpeak 3 Server 3.3.0 (2018-07-31 16:10:01)
+2018-08-18 11:52:53.680472|INFO    |ServerLibPriv |   |SystemInformation: Windows 8.1 (9600) x64 (AMD or Intel) Binary: 32bit
+2018-08-18 11:52:53.680472|INFO    |ServerLibPriv |   |Using hardware aes
+2018-08-18 11:52:53.682473|INFO    |DatabaseQuery |   |dbPlugin name:    SQLite3 plugin, Version 3, (c)TeamSpeak Systems GmbH
+2018-08-18 11:52:53.682473|INFO    |DatabaseQuery |   |dbPlugin version: 3.11.1
+2018-08-18 11:52:53.683474|INFO    |DatabaseQuery |   |checking database integrity (may take a while)
+2018-08-18 11:52:53.704488|INFO    |SQL           |   |db_CreateTables() tables created
+2018-08-18 11:52:53.729504|WARNING |Accounting    |   |Unable to open licensekey.dat, falling back to limited functionality
+2018-08-18 11:52:53.769531|INFO    |Accounting    |   |Licensing Information
+2018-08-18 11:52:53.769531|INFO    |Accounting    |   |licensed to       : Anonymous
+2018-08-18 11:52:53.769531|INFO    |Accounting    |   |type              : No License
+2018-08-18 11:52:53.769531|INFO    |Accounting    |   |starting date     : Sun Jul  1 00:00:00 2018
+2018-08-18 11:52:53.769531|INFO    |Accounting    |   |ending date       : Wed Jul 31 00:00:00 2019
+2018-08-18 11:52:53.769531|INFO    |Accounting    |   |max virtualservers: 1
+2018-08-18 11:52:53.769531|INFO    |Accounting    |   |max slots         : 32
+2018-08-18 11:52:54.110757|INFO    |              |   |myTeamSpeak identifier revocation list was downloaded successfully - all related features are activated
+2018-08-18 11:52:55.155507|INFO    |              |   |Puzzle precompute time: 1360
+2018-08-18 11:52:55.157514|INFO    |FileManager   |   |listening on 0.0.0.0:30033, [::]:30033
+2018-08-18 11:52:55.158509|INFO    |VirtualSvrMgr |   |executing monthly interval
+2018-08-18 11:52:55.158509|INFO    |VirtualSvrMgr |   |reset virtualserver traffic statistics
+2018-08-18 11:52:55.210544|INFO    |Query         |   |listening for query on 0.0.0.0:10011, [::]:10011
+2018-08-18 11:52:55.212546|INFO    |CIDRManager   |   |updated query_ip_whitelist ips: 127.0.0.1/32, ::1/128, 
+2018-08-18 12:19:37.607975|ERROR   |DatabaseQuery |   |db_exec() update clients set client_login_name='serveradmin', client_login_passw error: UNIQUE constraint failed: clients.client_login_name
