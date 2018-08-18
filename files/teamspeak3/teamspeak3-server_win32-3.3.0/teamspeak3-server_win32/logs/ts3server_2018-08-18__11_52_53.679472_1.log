@@ -1,7 +1,0 @@
-﻿2018-08-18 11:52:55.209544|INFO    |VirtualServer |1  |listening on 0.0.0.0:9987, [::]:9987
-2018-08-18 11:52:55.210544|WARNING |VirtualServer |1  |--------------------------------------------------------
-2018-08-18 11:52:55.210544|WARNING |VirtualServer |1  |ServerAdmin privilege key created, please use the line below
-2018-08-18 11:52:55.210544|WARNING |VirtualServer |1  |token=zaanFFMmtxgAAtLWpuRQo63Rz681bbA733codTy6
-2018-08-18 11:52:55.210544|WARNING |VirtualServer |1  |--------------------------------------------------------
-2018-08-18 12:18:58.288871|INFO    |VirtualServer |1  |client (id:2) was added to servergroup 'Server Admin'(id:6) by client 'server'(id:0)
-2018-08-18 12:18:58.289872|INFO    |VirtualServer |1  |client 'Devour'(id:2) used privilege key 'zaanFFMmtxgAAtLWpuRQo63Rz681bbA733codTy6' and was added to servergroup 'Server Admin'(id:6)

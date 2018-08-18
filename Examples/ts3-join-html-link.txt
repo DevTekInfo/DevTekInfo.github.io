@@ -1,0 +1,1 @@
+ts3server://IPADDRESS?port=PORTNUMBER&channel=CHANNELNAME&channelpassword=CHANNELPASSWORD
