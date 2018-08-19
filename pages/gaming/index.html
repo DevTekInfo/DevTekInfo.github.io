@@ -24,6 +24,55 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+        <style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
 	</head>
 	<body class="homepage">
 
@@ -33,7 +82,7 @@
 
 				<!-- Logo -->
 					<div id="logo">
-						<h1><a href="#">DevTEK</a></h1>
+						<h1><a href="../../index.html">DevTEK</a></h1>
 						<span>Owner: Devour52k</span>
 					</div>
 
@@ -41,7 +90,6 @@
 					<nav id="nav">
 						<ul>
 							<li><a href="../../index.html">Homepage</a></li>
-							<li><a href="repair_cost.html">Repairs</a></li>
 							<li class="active"><a href="index.html">Gaming</a></li>
 						<!--	<li><a href="twocolumn1.html">Left Sidebar</a></li>
 							<li><a href="twocolumn2.html">Right Sidebar</a></li>
@@ -62,7 +110,7 @@
 						<div id="sidebar" class="3u">
 							<section>
 								<header>
-									<h2>Gravida praesent</h2>
+									<h2></h2>
 									<span class="byline">Praesent lacus congue rutrum</span>
 								</header>
 								<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. Maecenas luctus lectus at sapien. Consectetuer adipiscing elit.</p>
