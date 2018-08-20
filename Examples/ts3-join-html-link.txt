@@ -1,1 +1,2 @@
 ts3server://IPADDRESS?port=PORTNUMBER&channel=CHANNELNAME&channelpassword=CHANNELPASSWORD
+<a href='ts3server://216.238.5.237?port=9987&channel=Welcome&channelpassword=' target='_parent'>TS3-DevTek</a>

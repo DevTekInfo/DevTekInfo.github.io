@@ -1180,8 +1180,8 @@ form label {
     outline: none !important; }
 
 .btn-primary {
-  background: #66D37E;
-  color: #fff;
+  background: #25dd85;
+  color: #1c2537;
   border: 2px solid #66D37E !important; }
   .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
     background: #7ad98f !important;
