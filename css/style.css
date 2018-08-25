@@ -176,10 +176,10 @@ h1, h2, h3, h4, h5, h6, figure {
           text-align: left;
           background: #fff;
           padding: 20px;
-          -webkit-border-radius: 4px;
-          -moz-border-radius: 4px;
-          -ms-border-radius: 4px;
-          border-radius: 4px;
+          -webkit-border-radius: 7px;
+          -moz-border-radius: 7px;
+          -ms-border-radius: 7px;
+          border-radius: 7px;
           -webkit-transition: 0s;
           -o-transition: 0s;
           transition: 0s; }
@@ -199,14 +199,14 @@ h1, h2, h3, h4, h5, h6, figure {
             display: block;
             margin-bottom: 7px; }
             .gtco-nav ul li.has-dropdown .dropdown li:last-child {
-              margin-bottom: 0; }
+              margin-bottom: 2; }
             .gtco-nav ul li.has-dropdown .dropdown li a {
-              padding: 2px 0;
+              padding: 3px 0;
               display: block;
               color: #999999;
               line-height: 1.2;
               text-transform: none;
-              font-size: 15px; }
+              font-size: 16px; }
               .gtco-nav ul li.has-dropdown .dropdown li a:hover {
                 color: #66D37E; }
             .gtco-nav ul li.has-dropdown .dropdown li.active > a {
