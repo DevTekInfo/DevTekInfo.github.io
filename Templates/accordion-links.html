@@ -4,9 +4,20 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-.accordion {
-    background-color: #eee;
-    color: #444;
+.rust-accordion-logo {
+    background-color: #576771;
+    color: #B1DEF4;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+.rust-accordion {
+    background-color: #576771;
+    color: #B1DEF4;
     cursor: pointer;
     padding: 18px;
     width: 100%;
@@ -17,46 +28,206 @@
     transition: 0.4s;
 }
 
-.active, .accordion:hover {
-    background-color: #ccc;
+.rust-active, .rust-accordion:hover {
+    background-color: #3A98CF;
 }
 
-.panel {
+.rust-panel {
     padding: 0 18px;
     display: none;
-    background-color: white;
+    background-color: #576771;
+    color: #B1DEF4;
     overflow: hidden;
 }
 </style>
 </head>
 <body>
+  <div>
+    <button class="rust-accordion-logo">
+      <a href="https://rust.facepunch.com/">
+        <img src="../images/logos/rust-logo.png" alt="Facepunch-Rust" width="100%"  border="0">
+      </a>
+      <h3 align="center">Custom Configuration</h3></button></div>
 
-<h1>Rust</h1>
-<h3>Client Manipulation</h3>
+  <button class="rust-accordion">Permanent Key Binds.</button>
+  <div class="rust-panel">
+    <p><ol>
+      <li> Right click "key.cfg" and go to properties. Once the properties are opened select the "read only" check box.
+      <li> Right click "key.cfg" select choose default program.
+      <li> Deselct "always use this program to open this file type" and select word pad.
+      <li> (Please Note: You MUST un-check this everytime you want to add or remove anything, the game will crash otherwise.)
+      <li> Once "key.cfg" is open navigate to the bottom and place the commands you want to add.
+      <li> When you have all the binds you want entered, click file at the top left and click save.
+      <li> Close out of wordpad, Navigate back to C:\Program Files (x86)\Steam\steamapps\common\Rust\cfg
+      <li> Right click "key.cfg" and go to properties. Once the properties are opened select the "read only" check box.
+  </ol></a></p>
+    <p></p>
+  </div>
 
-<button class="accordion">Launch Parameters</button>
-<div class="panel">
-  <p><a href="https://forum.teamspeak.com/forums/113-Client-Plugins-Lua-Scripts" class="ts3-plugins-lua-btn">Plugins/Lua Scripts</a></p>
-  <p></p>
-</div>
+  <button class="rust-accordion">Config Files</button>
+  <div class="rust-panel">
+    <button class="rust-accordion"><h4>Client.cfg</h4></button>
+    <div class="rust-panel">
+      <p>
+        <pre>
+      	audio.advancedocclusion "False"
+      	audio.game "1"
+      	audio.master "1"
+      	audio.musicvolume "0"
+      	audio.musicvolumemenu "0.42"
+      	audio.speakers "2"
+      	audio.v	oices "0.23"
+      	client.cambone ""
+      	client.camdist "2"
+      	client.camfov "90"
+      	client.camoffset "(0.0, 1.0, 0.0)"
+      	client.lookatradius "0.2"
+      	client.pushtotalk "True"
+      	client.rockskin "0"
+      	culling.entitymaxdist "5000"
+      	culling.entityminanimatorculldist "30"
+      	culling.entityminculldist "15"
+      	culling.entityminshadowculldist "0"
+      	culling.entityupdaterate "5"
+      	culling.safemode "False"
+      	decor.quality "0"
+      	dev.netgraph "False"
+      	effects.antialiasing "0"
+      	effects.ao "False"
+      	effects.bloom "False"
+      	effects.lensdirt "False"
+      	effects.maxgibs "0"
+      	effects.motionblur "False"
+      	effects.otherplayerslightflares "False"
+      	effects.shafts "False"
+      	effects.sharpen "False"
+      	effects.showoutlines "True"
+      	effects.vignet "False"
+      	fps.limit "-1"
+      	global.censornudity "False"
+      	global.god "False"
+      	global.language "en"
+      	global.perf "8"
+      	global.specnet "False"
+      	global.streamermode "False"
+      	graphics.af "0"
+      	graphics.branding "False"
+      	graphics.chat "True"
+      	graphics.contactshadows "False"
+      	graphics.dof "False"
+      	graphics.dof_aper "0"
+      	graphics.dof_blur "0"
+      	graphics.drawdistance "1000"
+      	graphics.fov "90"
+      	graphics.grassshadows "False"
+      	graphics.parallax "0"
+      	graphics.shaderlod "100"
+      	graphics.shadowcascades "1"
+      	graphics.shadowdistance "0"
+      	graphics.shadowlights "0"
+      	graphics.shadowmode "0"
+      	graphics.shadowquality "0"
+      	graphics.uiscale "1"
+      	grass.displace "False"
+      	grass.quality "0"
+      	input.autocrouch "False"
+      	input.flipy "False"
+      	input.holdtime "0.2"
+      	input.sensitivity "0.44"
+      	mesh.quality "0"
+      	netgraph.enabled "False"
+      	netgraph.updatespeed "5"
+      	particle.quality "0"
+      	player.footik "True"
+      	player.footikdistance "30"
+      	player.recoilcomp "True"
+      	playercull.enabled "True"
+      	playercull.maxplayerdist "5000"
+      	playercull.maxsleeperdist "30"
+      	playercull.minculldist "20"
+      	playercull.updaterate "5"
+      	playercull.visquality "2"
+      	sss.enabled "False"
+      	sss.halfres "False"
+      	sss.quality "0"
+      	sss.scale "1"
+      	terrain.basetexcomp "True"
+      	terrain.quality "0"
+      	tree.quality "0"
+      	voice.loopback "False"
+      	water.quality "0"
+      	water.reflections "0"
+      	nametags.enabled "True"
+      	gc.interval "180"
+      	lerp.smoothing "0.5"
+      	lerp.time "0.1"
+      	client.maxpeerspersecond "50"
+      	</pre>
+      </p>
+  </div>
+    <button class="rust-accordion"><h4>Keys.cfg</h4></button>
+    <div class="rust-panel">
+      <p>
+        <pre>
+          bind f2 "consoletoggle;combatlog"
+          bind tab "inventory.toggle"
+          bind return "chat.open"
+          bind space "+jump"
+          bind 1 "+slot1"
+          bind 2 "+slot2"
+          bind 3 "+slot3"
+          bind 4 "+slot4"
+          bind 5 "+slot5"
+          bind 6 "+slot6"
+          bind 7 "+slot7"
+          bind 8 "+slot8"
+          bind a "+left"
+          bind b "chat.say /remove"
+          bind c "duck"
+          bind d "+right"
+          bind e "+use"
+          bind f "lighttoggle"
+          bind g "inventory.togglecrafting"
+          bind h "+map"
+          bind k chat.say "/home 1"\
+          bind l chat.say "/home 2"\
+          bind r "+reload"
+          bind s "+backward"
+          bind t "chat.open"
+          bind u "chat.say /tpc"
+          bind v "+voice"
+          bind w "+forward"
+          bind z "attack;duck"
+          bind n "forward;sprint"
+          bind f1 "consoletoggle"
+          bind rightshift "+sprint"
+          bind leftshift "+sprint"
+          bind leftcontrol "+duck"
+          bind leftalt "+altlook"
+          bind mouse0 "+attack"
+          bind mouse1 "+attack2"
+          bind mouse2 "+attack3"
+          bind mousewheelup "+invprev"
+          bind mousewheeldown "+invnext"
+          bind o chat.say "/sethome 1"\
+          bind p chat.say "/sethome 2"\
+        </pre>
+      </p>
+    </div>
+  </div>
 
-<button class="accordion">Console Commands</button>
-<div class="panel">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-
-<button class="accordion">Addons</button>
-<div class="panel">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
+  <!-- button class="accordion">Addons</button>
+  <div class="panel">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div -->
 
 <script>
-var acc = document.getElementsByClassName("accordion");
+var acc = document.getElementsByClassName("rust-accordion");
 var i;
 
 for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
+        this.classList.toggle("rust-active");
         var panel = this.nextElementSibling;
         if (panel.style.display === "block") {
             panel.style.display = "none";
