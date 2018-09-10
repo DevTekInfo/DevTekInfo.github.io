@@ -1,6 +1,7 @@
-## Welcome to GitHub Pages
+## DevTEK
+### Informational page
 
-You can use the [editor on GitHub](https://github.com/DevTekInfo/DevTekInfo.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+You can use visit the Homepage here [Dev73k.com](http://www.dev73k.com/) to preview the content that is documented here.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
