@@ -13,6 +13,7 @@
 	body
 	{
 		background: #576771;
+		color: #21A6DC;
 	}
 
 	body,input,textarea,select
@@ -271,6 +272,7 @@
 
 	#nav
 	{
+		background-image: url(/css/images/mobileUI-site-nav-opener-bg.svg);
 	}
 
 		#nav ul
@@ -296,7 +298,7 @@
 	#main
 	{
 		position: relative;
-		background: #fff url(images/overlay.png) repeat;
+		background: #191919 repeat;
 	}
 
 	.divider

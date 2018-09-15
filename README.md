@@ -3,18 +3,16 @@
 
 You can use visit the Homepage here [Dev73k.com](http://www.dev73k.com/) to preview the content that is documented here.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Resources
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Since I started this project with very little prior experience with HTML, Markdown, Css, Javascript, etc.. I use online guides as teachers. These are the major sites I used for Reference:
+-
+-
+-
+-
 
 ```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
 
 - Bulleted
 - List

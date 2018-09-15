@@ -43,7 +43,7 @@
     left: 0;
     top: 0;
     width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    height: auto; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -150,12 +150,15 @@
 						<div id="sidebar" class="3u">
 							<section>
 								<header>
-									<p><a class="image full"><img src="../../images/page_titles/main-sb-title.png" alt=""></a></p>
+									<p><a class="image half"><img src="../../images/page_titles/main-sb-title.png" alt=""></a></p>
 									<span class="byline">Pc Games <cite>Note: These Links are Placeholders awaiting to be updated.</span>
 								</header>
 								<ul class="default">
-									<li><a href="#">Rust</a></li>
+									<li><a class="image featured" href="#"><img src="../../images/gaming/rust-img/rust_icon.png"></a></li>
 									<li><a href="#">Fortify</a></li>
+										<ul>
+											<li><a href="https://store.steampowered.com/app/505040/FORTIFY/">Steam</a></li>
+										</ul>
 									<li><a href="#">Borderlands 2</a></li>
 									<li><a href="#">Fortnite</a></li>
 									<!-- <li><a href="#"></a></li> -->
@@ -197,6 +200,7 @@
 								    <span class="game_close">&times;</span>
 								    		<a><img src="../../images/gaming/rust-img/img_bg_10.png" alt="Facepunch-Rust" width="100%"  border="0"></a>
 								    		<h3 align="center">Custom Configuration</h3>
+										<a href="https://store.steampowered.com/app/252490/Rust/"><img src="images/steam_icon.png" alt="steam" width="70px"></a>
 
 								    <button class="rust-accordion">Permanent Key Binds.</button>
 								    <div class="rust-panel">
@@ -385,26 +389,20 @@ bind p chat.say "/sethome 2"\
 															}
 													});
 											}
-
 								      // Get the modal
 								      var modal = document.getElementById('Game_Modal');
-
 								      // Get the button that opens the modal
 								      var btn = document.getElementById("Game_Btn");
-
 								      // Get the <span> element that closes the modal
 								      var span = document.getElementsByClassName("game_close")[0];
-
 								      // When the user clicks the button, open the modal
 								      btn.onclick = function() {
 								          modal.style.display = "block";
 								      }
-
 								      // When the user clicks on <span> (x), close the modal
 								      span.onclick = function() {
 								          modal.style.display = "none";
 								      }
-
 								      // When the user clicks anywhere outside of the modal, close it
 								      window.onclick = function(event) {
 								          if (event.target == modal) {
@@ -412,8 +410,6 @@ bind p chat.say "/sethome 2"\
 								          }
 								      }
 								    </script>
-
-
 								<ul class="default">
 									<!--li><a href="#">Pellentesque quis lectus</a></li>
 									<li><a href="#">Lorem ipsum adipiscing elit</a></li>
@@ -424,9 +420,7 @@ bind p chat.say "/sethome 2"\
 							</section>
 						</div>
 					<!-- Sidebar -->
-
 				</div>
-
 			</div>
 		</div>
 	<!-- Main -->
