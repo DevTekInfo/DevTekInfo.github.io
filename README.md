@@ -1,18 +1,27 @@
 ## DevTEK
 ### Informational page
 
-You can use visit the Homepage here [Dev73k.com](http://www.dev73k.com/) to preview the content that is documented here.
+You can visit the Homepage here [Dev73k.com](http://www.dev73k.com/)
 
-### Resources
+#### Cell Phone Screen/LCD Repair
 
-Since I started this project with very little prior experience with HTML, Markdown, Css, Javascript, etc.. I use online guides as teachers. These are the major sites I used for Reference:
--
--
--
--
+##### Complete Lcd Digitizer Touch Screen Replacement Parts + Labor
+  - Apple Iphone
+    - 4 (N/A)
+    - 4s (N/A)
+    - 5s ($18)
+    - 5c ($18)
+    - 6 ($26)
+    - 6+ ($26)
+    - 6s ($30)
+    - 6s+ ($30)
+    - SE ($20)
+    - 7 ($35)
+    - 7+ ($45)
+    - 8 (Sold Out)
+    - 8+ (Sold Out)
 
 ```markdown
-
 
 - Bulleted
 - List
