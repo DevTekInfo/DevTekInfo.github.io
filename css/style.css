@@ -1744,7 +1744,67 @@ form label {
       content: "\e117";
       font-size: 26px;
       color: #FF0000; }
-}
+      
+.coin-ol {
+  padding: 0;
+  margin: 0; }
+  .coin-ol li {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+    padding-left: 40px;
+    position: relative;
+    list-style: none;
+    line-height: 1.5;
+    font-weight: 300; }
+    .coin-li li:before {
+      font-family: 'icomoon';
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: absolute;
+      left: 0;
+      to: .2em;
+      content: "\e93b";
+      font-size: 26px;
+      color: #66D37E; }
+      
+.phone-li {
+  padding: 0;
+  margin: 0; }
+  .phone-li ul {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+    padding-left: 40px;
+    position: relative;
+    list-style: none;
+    line-height: 1.5;
+    font-weight: 300; }
+    .phone-li li:before {
+      font-family: 'icomoon';
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: absolute;
+      left: 0;
+      to: .2em;
+      content: "\e9f4";
+      font-size: 26px;
+      color: #66D37E; }
+      
 .button {
    border: 1px solid #0a3c59;
    background: #004688;
