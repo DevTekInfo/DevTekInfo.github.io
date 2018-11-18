@@ -1,19 +1,27 @@
-## Welcome to GitHub Pages
+## DevTEK
+### Informational page
 
-You can use the [editor on GitHub](https://github.com/DevTekInfo/DevTekInfo.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+You can visit the Homepage here [Dev73k.com](http://www.dev73k.com/)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+#### Cell Phone Screen/LCD Repair
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+##### Complete Lcd Digitizer Touch Screen Replacement Parts + Labor
+  - Apple Iphone
+    - 4 (N/A)
+    - 4s (N/A)
+    - 5s ($18)
+    - 5c ($18)
+    - 6 ($26)
+    - 6+ ($26)
+    - 6s ($30)
+    - 6s+ ($30)
+    - SE ($20)
+    - 7 ($35)
+    - 7+ ($45)
+    - 8 (Sold Out)
+    - 8+ (Sold Out)
 
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
 
 - Bulleted
 - List

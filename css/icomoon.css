@@ -591,9 +591,9 @@
 .icon-dot-single:before {
   content: "\e93a";
 }
-.icon-dots-three-horizontal:before {
+/*.icon-dots-three-horizontal:before {
   content: "\e93b";
-}
+}*/
 .icon-dots-three-vertical:before {
   content: "\e93c";
 }
@@ -1568,4 +1568,7 @@
 }
 .icon-youtube:before {
   content: "\ea80";
+}
+.icon-coin-dollar:before {
+  content: "\e93b";
 }

@@ -1,0 +1,25 @@
+/*https://www.evernote.com/shard/s326/sh/7a8409e7-e14b-436a-a621-8da33075efd7/a371386c514dfcbe7b169dc6a5dd0c76*/
+
+
+blockquote.style5 {
+  font: 12px/18px normal "Courier New", sans-serif;
+  padding-left: 70px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: #000;
+  color: white;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin: 5px;
+  background-image: url(images/openquote5.gif);
+  background-position: middle left;
+  background-repeat: no-repeat;
+  text-indent: 23px;
+  }
+  blockquote.style5 div {
+    padding-right: 50px;
+    display: block;
+    background-image: url(images/closequote5.gif);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
