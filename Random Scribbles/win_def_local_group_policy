@@ -1,0 +1,37 @@
+<h2>How to disable Windows Defender Antivirus using Group Policy</h2>
+<p>On Windows 10 Pro, it's possible to use the Group Policy Editor to disable the Windows Defender Antivirus permanently.</p>
+<ol><li>Use the&nbsp;<strong>Windows key + R</strong>&nbsp;keyboard shortcut to open the <strong>Run</strong> command.</li>
+<li>Type&nbsp;<strong>gpedit.msc</strong>&nbsp;and click&nbsp;<strong>OK</strong>&nbsp;to open the Local Group Policy Editor.</li>
+<li><p>Browse the following path:</p>
+<p><code>Computer Configuration &gt; Administrative Templates &gt; Windows Components &gt; Windows Defender Antivirus</code></p></li>
+<li>On the right side, double-click the <strong>Turn off Windows Defender Antivirus</strong> policy.</li>
+<li>Select the <strong>Enabled</strong> option.</li>
+<li>Click <strong>Apply</strong>. </li>
+<li>Click <strong>OK</strong>.</li>
+<li><p>Browse the following path:</p>
+<p><code>Computer Configuration &gt; Administrative Templates &gt; Windows Components &gt; Windows Defender Antivirus &gt; Real-time Protection</code></p></li>
+<li><p>On the right side, double-click the <strong>Turn on behavior monitoring</strong> policy.</p>
+<p><a href="/sites/wpcentral.com/files/styles/xlarge/public/field/image/2017/11/turn-off-win-defender-policy.jpg?itok=n5OUYgxI" title="" class="lightbox"><img src="/sites/wpcentral.com/files/styles/larger/public/field/image/2017/11/turn-off-win-defender-policy.jpg?itok=n5OUYgxI" class="image-large lightbox lazy-loaded" data-src="/sites/wpcentral.com/files/styles/larger/public/field/image/2017/11/turn-off-win-defender-policy.jpg?itok=n5OUYgxI" width="800" height="473"></a><noscript><img src="https://www.windowscentral.com/sites/wpcentral.com/files/styles/large/public/field/image/2017/11/turn-off-win-defender-policy.jpg?itok=n5OUYgxI" width="800" height="473" class="image-large lightbox"></noscript></p></li>
+<li>Select the <strong>Disabled</strong> option.</li>
+<li>Click <strong>Apply</strong>. </li>
+<li><p>Click <strong>OK</strong>.</p>
+<p><a href="/sites/wpcentral.com/files/styles/xlarge/public/field/image/2017/11/windows-defender-antivirus-disable-policy.jpg?itok=XpMv4ttU" title="" class="lightbox"><img src="/sites/wpcentral.com/files/styles/larger/public/field/image/2017/11/windows-defender-antivirus-disable-policy.jpg?itok=XpMv4ttU" class="image-large lightbox lazy-loaded" data-src="/sites/wpcentral.com/files/styles/larger/public/field/image/2017/11/windows-defender-antivirus-disable-policy.jpg?itok=XpMv4ttU" width="686" height="636"></a><noscript><img src="https://www.windowscentral.com/sites/wpcentral.com/files/styles/large/public/field/image/2017/11/windows-defender-antivirus-disable-policy.jpg?itok=XpMv4ttU" width="686" height="636" class="image-large lightbox"></noscript></p></li>
+<li><p>On "Real-time Protection," double-click the <strong>Monitor file and program activity on your computer</strong> policy.</p>
+<p><a href="/sites/wpcentral.com/files/styles/xlarge/public/field/image/2017/11/defender-reat-time-protection-policies__.jpg?itok=d-aA6vcq" title="" class="lightbox"><img src="/sites/wpcentral.com/files/styles/larger/public/field/image/2017/11/defender-reat-time-protection-policies__.jpg?itok=d-aA6vcq" class="image-large lightbox lazy-loaded" data-src="/sites/wpcentral.com/files/styles/larger/public/field/image/2017/11/defender-reat-time-protection-policies__.jpg?itok=d-aA6vcq" width="800" height="473"></a><noscript><img src="https://www.windowscentral.com/sites/wpcentral.com/files/styles/large/public/field/image/2017/11/defender-reat-time-protection-policies__.jpg?itok=d-aA6vcq" width="800" height="473" class="image-large lightbox"></noscript></p></li>
+<li>Select the <strong>Disabled</strong> option.</li>
+<li>Click <strong>Apply</strong>. </li>
+<li><p>Click <strong>OK</strong>.</p>
+<p><a href="/sites/wpcentral.com/files/styles/xlarge/public/field/image/2017/11/monitor-file-program-activity-policy.jpg?itok=LxFTqCzv" title="" class="lightbox"><img src="/sites/wpcentral.com/files/styles/larger/public/field/image/2017/11/monitor-file-program-activity-policy.jpg?itok=LxFTqCzv" class="image-large lightbox lazy-loaded" data-src="/sites/wpcentral.com/files/styles/larger/public/field/image/2017/11/monitor-file-program-activity-policy.jpg?itok=LxFTqCzv" width="686" height="636"></a><noscript><img src="https://www.windowscentral.com/sites/wpcentral.com/files/styles/large/public/field/image/2017/11/monitor-file-program-activity-policy.jpg?itok=LxFTqCzv" width="686" height="636" class="image-large lightbox"></noscript></p></li>
+<li>On "Real-time Protection," double-click the <strong>Turn on process scanning whenever real-time protection is enabled</strong> policy.</li>
+<li>Select the <strong>Disabled</strong> option.</li>
+<li>Click <strong>Apply</strong>. </li>
+<li><p>Click <strong>OK</strong>.</p>
+<p><a href="/sites/wpcentral.com/files/styles/xlarge/public/field/image/2017/11/turn-on-process-scanning-policy.jpg?itok=cxx0Dw84" title="" class="lightbox"><img src="/sites/wpcentral.com/files/styles/larger/public/field/image/2017/11/turn-on-process-scanning-policy.jpg?itok=cxx0Dw84" class="image-large lightbox lazy-loaded" data-src="/sites/wpcentral.com/files/styles/larger/public/field/image/2017/11/turn-on-process-scanning-policy.jpg?itok=cxx0Dw84" width="686" height="636"></a><noscript><img src="https://www.windowscentral.com/sites/wpcentral.com/files/styles/large/public/field/image/2017/11/turn-on-process-scanning-policy.jpg?itok=cxx0Dw84" width="686" height="636" class="image-large lightbox"></noscript></p></li>
+<li>On "Real-time Protection," double-click the <strong>Turn on behavior monitoring</strong> policy.</li>
+<li>Select the <strong>Disabled</strong> option.</li>
+<li>Click <strong>Apply</strong>. </li>
+<li><p>Click <strong>OK</strong>.</p>
+<p><a href="/sites/wpcentral.com/files/styles/xlarge/public/field/image/2017/11/turn-on-behavior-monitor-policy.jpg?itok=kYemPNGc" title="" class="lightbox"><img src="/sites/wpcentral.com/files/styles/larger/public/field/image/2017/11/turn-on-behavior-monitor-policy.jpg?itok=kYemPNGc" class="image-large lightbox lazy-loaded" data-src="/sites/wpcentral.com/files/styles/larger/public/field/image/2017/11/turn-on-behavior-monitor-policy.jpg?itok=kYemPNGc" width="686" height="636"></a><noscript><img src="https://www.windowscentral.com/sites/wpcentral.com/files/styles/large/public/field/image/2017/11/turn-on-behavior-monitor-policy.jpg?itok=kYemPNGc" width="686" height="636" class="image-large lightbox"></noscript></p></li>
+<li>Restart your computer.</li>
+</ol><p>Once you've completed the steps, Windows Defender Antivirus will no longer scan and detect malware on your device, even after restarting your computer.</p>
+<p>At any time, you can enable the Windows Defender Antivirus using the same steps, but on <strong>step No. 5</strong>, <strong>10</strong>, and <strong>14</strong>, make sure to select the <strong>Not Configured</strong> option. Then just restart your device to apply the changes.</p>
