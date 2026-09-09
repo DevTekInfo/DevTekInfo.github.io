@@ -1,0 +1,2252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Project Atlas</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f6f8;
+        color: #17202a;
+      }
+
+      header {
+        background: #071725;
+        color: white;
+        padding: 18px 28px;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .logo {
+        font-size: 26px;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+
+      .logo span {
+        color: #1687e8;
+      }
+
+      .search {
+        flex: 1;
+        max-width: 600px;
+      }
+
+      .search input {
+        width: 100%;
+        padding: 13px 18px;
+        border-radius: 7px;
+        border: 1px solid #52616d;
+        background: #263541;
+        color: white;
+        font-size: 17px;
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 45px auto;
+        padding: 0 25px;
+      }
+
+      .eyebrow {
+        color: #64727e;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      h1 {
+        font-size: 34px;
+        margin: 8px 0;
+      }
+
+      .subtitle {
+        color: #66737d;
+        margin-bottom: 35px;
+      }
+
+      .result {
+        background: white;
+        border: 1px solid #d7dde2;
+        border-radius: 10px;
+        padding: 22px;
+        cursor: pointer;
+        transition: 0.15s;
+        box-shadow: 0 2px 6px rgba(0,0,0,.05);
+      }
+
+      .result:hover {
+        border-color: #1687e8;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 14px rgba(0,0,0,.10);
+      }
+
+      .result h2 {
+        margin: 0 0 8px;
+        color: #075ba7;
+      }
+
+      .result p {
+        margin: 4px 0;
+        color: #5c6973;
+      }
+
+      .tag {
+        display: inline-block;
+        background: #eaf3fb;
+        color: #075ba7;
+        padding: 5px 10px;
+        border-radius: 15px;
+        margin: 12px 5px 0 0;
+        font-size: 13px;
+      }
+
+      #circuit {
+        display: none;
+      }
+
+      .back {
+        color: #075ba7;
+        cursor: pointer;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .back-to-top {
+        display: block;
+        margin-top: 24px;
+        padding: 12px 18px;
+        border: 1px solid #075ba7;
+        border-radius: 6px;
+        background: white;
+        color: #075ba7;
+        font: inherit;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .back-to-top:hover {
+        background: #eef6ff;
+      }
+
+      .location-card {
+        background: white;
+        border-radius: 10px;
+        border: 1px solid #d7dde2;
+        padding: 24px;
+        margin-top: 25px;
+      }
+
+      .location {
+        background: #071725;
+        color: white;
+        padding: 18px;
+        border-radius: 8px;
+        margin: 18px 0;
+      }
+
+      .identifier {
+        border-left: 5px solid #1687e8;
+        padding: 10px 18px;
+        background: #eef6fd;
+        margin: 20px 0;
+      }
+
+      .wire-path {
+        display: flex;
+        align-items: stretch;
+        gap: 8px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+      }
+
+      .wire {
+        flex: 1;
+        min-width: 150px;
+        border: 1px solid #cfd6dc;
+        border-radius: 7px;
+        padding: 15px;
+        background: white;
+      }
+
+      .arrow {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+      }
+
+      .verified {
+        color: #238636;
+        font-weight: bold;
+        margin-top: 25px;
+      }
+      .location-photo {
+        position: relative;
+        margin: 18px 0;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #111;
+      }
+
+      .location-photo img {
+        display: block;
+        width: 100%;
+        max-height: 500px;
+        object-fit: cover;
+      }
+
+      .front-harness-layout {
+        aspect-ratio: 3507 / 2550;
+        background: white;
+      }
+
+      .front-harness-layout img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: calc(100% * 2550 / 3507);
+        height: auto;
+        max-height: none;
+        transform: translate(-50%, -50%) rotate(90deg);
+      }
+
+      .photo-label {
+        position: absolute;
+        left: 18px;
+        bottom: 18px;
+        background: rgba(7, 23, 37, 0.92);
+        color: white;
+        padding: 9px 14px;
+        border-left: 4px solid #1687e8;
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      .r20-photo {
+        position: relative;
+        margin: 18px 0;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #111;
+      }
+
+      .r20-photo img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .r20-highlight {
+        position: absolute;
+
+        /* Technician-verified R20 highlight position */
+        left: 70%;
+        top: 51%;
+        width: 20%;
+        height: 37%;
+
+        border: 4px solid #e53935;
+        border-radius: 10px;
+        box-shadow: 0 0 0 3px rgba(229,57,53,.18);
+        pointer-events: none;
+      }
+
+      .r20-highlight span {
+        position: absolute;
+        top: -34px;
+        left: 0;
+
+        background: #e53935;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      /* Technician-verified rear tie-in location */
+      .rear-tie-highlight {
+        position: absolute;
+
+        left: 33%;
+        top: 71%;
+        width: 28%;
+        height: 10%;
+
+        border: 4px solid #e53935;
+        border-radius: 10px;
+        box-shadow: 0 0 0 3px rgba(229,57,53,.18);
+        pointer-events: none;
+      }
+
+      .rear-tie-highlight span {
+        position: absolute;
+        top: -34px;
+        left: 0;
+
+        background: #e53935;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        white-space: nowrap;
+      }
+      /* Scanned-reference pages */
+      .draft-status {
+        color: #845b13;
+        font-weight: bold;
+      }
+
+      .reference-page h2 {
+        margin-top: 32px;
+      }
+
+      .reference-table-scroll {
+        overflow-x: auto;
+      }
+
+      .reference-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0 26px;
+      }
+
+      .reference-table th,
+      .reference-table td {
+        border: 1px solid #d7dde2;
+        padding: 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .reference-table th {
+        background: #eef6fd;
+      }
+
+      .scan-reference {
+        margin: 24px 0;
+      }
+
+      .scan-reference figcaption {
+        font-weight: bold;
+        margin-bottom: 12px;
+      }
+
+      .scan-reference img,
+      .scan-reference svg {
+        display: block;
+        width: 100%;
+        max-width: 850px;
+        height: auto;
+        border: 1px solid #d7dde2;
+        border-radius: 7px;
+      }
+
+      .reference-page a {
+        color: #075ba7;
+        font-weight: bold;
+      }
+
+    </style>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="logo"><span>▲</span> ATLAS</div>
+
+      <div class="search">
+        <input
+          id="searchBox"
+          type="text"
+          placeholder="Search circuits, relays, connectors..."
+          oninput="searchAtlas()"
+          >
+      </div>
+    </header>
+
+    <main>
+
+      <!-- SEARCH SCREEN -->
+
+      <section id="searchScreen">
+
+        <div class="eyebrow">PROJECT ATLAS · DEMO</div>
+
+        <h1>What are you looking for?</h1>
+
+        <p class="subtitle">
+          Search the vehicle instead of searching the shop.
+        </p>
+        <div id="browseCircuits">
+          <div class="eyebrow" style="margin-bottom:12px;">
+            AVAILABLE CIRCUITS
+          </div>
+
+          <div class="result" onclick="openCircuit()">
+            <h2>Clearance / Tail / Park Lights — Rear Tie-In</h2>
+            <p>Exterior Lighting · Rear Chassis</p>
+
+            <span class="tag">clearance</span>
+            <span class="tag">tail lights</span>
+            <span class="tag">park lights</span>
+          </div>
+
+          <div class="result"
+            onclick="openCornerCircuit()"
+            style="margin-top:15px;">
+
+            <h2>Corner Cap Lights — Low / Flash / Sync</h2>
+            <p>Exterior Lighting · Corner Caps</p>
+
+            <span class="tag">corner cap</span>
+            <span class="tag">low</span>
+            <span class="tag">flash</span>
+            <span class="tag">sync</span>
+          </div>
+
+          <div class="result"
+            onclick="openFrontHarness()"
+            style="margin-top:15px;">
+
+            <h2>2026 ASV Type 3 — Front Harness</h2>
+            <p>Chassis Wiring · Front Harness</p>
+
+            <span class="tag">front harness</span>
+            <span class="tag">e-series</span>
+            <span class="tag">type 3</span>
+            <span class="tag">under hood</span>
+          </div>
+
+          <div class="result"
+            onclick="openReferencePage('highIdle')"
+            style="margin-top:15px;">
+            <h2>High Idle — E-Series / F-Series</h2>
+            <p>Chassis Controls · High Idle</p>
+            <p class="draft-status">Draft — Technician Review Pending</p>
+            <span class="tag">high idle</span>
+            <span class="tag">hi idle</span>
+            <span class="tag">hi-idle</span>
+            <span class="tag">pto</span>
+          </div>
+
+          <div class="result"
+            onclick="openReferencePage('popLocks')"
+            style="margin-top:15px;">
+            <h2>Power Door Locks / PopLocks — Ford</h2>
+            <p>Body Controls · Door Locks</p>
+            <p class="draft-status">Draft — Technician Review Pending</p>
+            <span class="tag">poplocks</span>
+            <span class="tag">pop locks</span>
+            <span class="tag">pop lock</span>
+            <span class="tag">door locks</span>
+          </div>
+
+          <div class="result"
+            onclick="openReferencePage('flashPatterns')"
+            style="margin-top:15px;">
+            <h2>Emergency Lights — Flash Patterns / Flasher Wiring</h2>
+            <p>Exterior Lighting · Flashers</p>
+            <p class="draft-status">Draft — Technician Review Pending</p>
+            <span class="tag">flash pattern</span>
+            <span class="tag">flasher</span>
+            <span class="tag">emergency lights</span>
+            <span class="tag">inpower</span>
+          </div>
+
+          <div class="result"
+            onclick="openReferencePage('airConditioning')"
+            style="margin-top:15px;">
+            <h2>E-Series A/C — Compressor Tap / Thermostat</h2>
+            <p>Climate Control · A/C</p>
+            <p class="draft-status">Draft — Technician Review Pending</p>
+            <span class="tag">a/c</span>
+            <span class="tag">ac compressor</span>
+            <span class="tag">air conditioning</span>
+            <span class="tag">compressor tap</span>
+          </div>
+
+          <div class="result"
+            onclick="openReferencePage('rearSignals')"
+            style="margin-top:15px;">
+            <h2>Rear Tie-In — Brake / Tail / Turn / Reverse</h2>
+            <p>Chassis Wiring · Rear Signals</p>
+            <p class="draft-status">Draft — Technician Review Pending</p>
+            <span class="tag">rear tie in</span>
+            <span class="tag">rear tie-in</span>
+            <span class="tag">brake</span>
+            <span class="tag">tail</span>
+          </div>
+
+          <div class="result"
+            onclick="openReferencePage('timerRelay')"
+            style="margin-top:15px;">
+            <h2>Timer Relay — Floor Lights</h2>
+            <p>Interior Lighting · Timer Relay</p>
+            <p class="draft-status">Draft — Technician Review Pending</p>
+            <span class="tag">timer</span>
+            <span class="tag">timer relay</span>
+            <span class="tag">floor lights</span>
+            <span class="tag">floor lighting</span>
+          </div>
+
+          <div class="result"
+            onclick="openReferencePage('wheeledCoach')"
+            style="margin-top:15px;">
+            <h2>Wheeled Coach — Switch Panel / Indicators</h2>
+            <p>Module Controls · Wheeled Coach</p>
+            <p class="draft-status">Draft — Technician Review Pending</p>
+            <span class="tag">wheeled coach</span>
+            <span class="tag">switch panel</span>
+            <span class="tag">module master</span>
+            <span class="tag">emergency master</span>
+          </div>
+          <div class="result"
+            onclick="openReferencePage('miscellaneous')"
+            style="margin-top:15px;">
+            <h2>Miscellaneous — Factory Speaker Wires</h2>
+            <p>Miscellaneous · E-Series</p>
+            <p class="draft-status">Draft — Technician Review Pending</p>
+            <span class="tag">factory speaker</span>
+            <span class="tag">white/violet</span>
+            <span class="tag">white/orange</span>
+          </div>
+        </div>
+        <div id="result" class="result" onclick="openCircuit()" style="display:none;">
+
+          <h2>Clearance / Tail / Park Lights — Rear Tie-In</h2>
+
+          <p>Exterior Lighting · Rear Chassis</p>
+
+          <span class="tag">clearance</span>
+          <span class="tag">tail lights</span>
+          <span class="tag">park lights</span>
+
+        </div>
+
+        <div id="cornerResult" class="result"
+          onclick="openCornerCircuit()"
+          style="display:none; margin-top:15px;">
+
+          <h2>Corner Cap Lights — Low / Flash / Sync</h2>
+          <p>Exterior Lighting · Corner Caps</p>
+
+          <span class="tag">corner cap</span>
+          <span class="tag">corner lights</span>
+          <span class="tag">flash</span>
+          <span class="tag">Y35</span>
+          <span class="tag">Y37</span>
+          <span class="tag">Y39</span>
+        </div>
+
+        <div id="frontHarnessResult"
+          class="result"
+          onclick="openFrontHarness()"
+          style="display:none; margin-top:15px;">
+
+          <h2>2026 ASV Type 3 — Front Harness</h2>
+          <p>Chassis Wiring · Front Harness</p>
+
+          <span class="tag">front harness</span>
+          <span class="tag">e-series</span>
+          <span class="tag">speaker</span>
+          <span class="tag">horn</span>
+          <span class="tag">flasher</span>
+        </div>
+
+        <div id="miscellaneousResult" class="result"
+          onclick="openReferencePage('miscellaneous')"
+          style="display:none; margin-top:15px;">
+          <h2>Miscellaneous — Factory Speaker Wires</h2>
+          <p>Miscellaneous · E-Series</p>
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <span class="tag">factory speaker</span>
+          <span class="tag">white/violet</span>
+          <span class="tag">white/orange</span>
+        </div>
+        <div id="highIdleResult" class="result"
+          onclick="openReferencePage('highIdle')"
+          style="display:none; margin-top:15px;">
+          <h2>High Idle — E-Series / F-Series</h2>
+          <p>Chassis Controls · High Idle</p>
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <span class="tag">high idle</span>
+          <span class="tag">hi idle</span>
+          <span class="tag">hi-idle</span>
+          <span class="tag">pto</span>
+        </div>
+
+        <div id="popLocksResult" class="result"
+          onclick="openReferencePage('popLocks')"
+          style="display:none; margin-top:15px;">
+          <h2>Power Door Locks / PopLocks — Ford</h2>
+          <p>Body Controls · Door Locks</p>
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <span class="tag">poplocks</span>
+          <span class="tag">pop locks</span>
+          <span class="tag">pop lock</span>
+          <span class="tag">door locks</span>
+        </div>
+
+        <div id="flashPatternsResult" class="result"
+          onclick="openReferencePage('flashPatterns')"
+          style="display:none; margin-top:15px;">
+          <h2>Emergency Lights — Flash Patterns / Flasher Wiring</h2>
+          <p>Exterior Lighting · Flashers</p>
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <span class="tag">flash pattern</span>
+          <span class="tag">flasher</span>
+          <span class="tag">emergency lights</span>
+          <span class="tag">inpower</span>
+        </div>
+
+        <div id="airConditioningResult" class="result"
+          onclick="openReferencePage('airConditioning')"
+          style="display:none; margin-top:15px;">
+          <h2>E-Series A/C — Compressor Tap / Thermostat</h2>
+          <p>Climate Control · A/C</p>
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <span class="tag">a/c</span>
+          <span class="tag">ac compressor</span>
+          <span class="tag">air conditioning</span>
+          <span class="tag">compressor tap</span>
+        </div>
+
+        <div id="rearSignalsResult" class="result"
+          onclick="openReferencePage('rearSignals')"
+          style="display:none; margin-top:15px;">
+          <h2>Rear Tie-In — Brake / Tail / Turn / Reverse</h2>
+          <p>Chassis Wiring · Rear Signals</p>
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <span class="tag">rear tie in</span>
+          <span class="tag">rear tie-in</span>
+          <span class="tag">brake</span>
+          <span class="tag">tail</span>
+        </div>
+
+        <div id="timerRelayResult" class="result"
+          onclick="openReferencePage('timerRelay')"
+          style="display:none; margin-top:15px;">
+          <h2>Timer Relay — Floor Lights</h2>
+          <p>Interior Lighting · Timer Relay</p>
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <span class="tag">timer</span>
+          <span class="tag">timer relay</span>
+          <span class="tag">floor lights</span>
+          <span class="tag">floor lighting</span>
+        </div>
+
+        <div id="wheeledCoachResult" class="result"
+          onclick="openReferencePage('wheeledCoach')"
+          style="display:none; margin-top:15px;">
+          <h2>Wheeled Coach — Switch Panel / Indicators</h2>
+          <p>Module Controls · Wheeled Coach</p>
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <span class="tag">wheeled coach</span>
+          <span class="tag">switch panel</span>
+          <span class="tag">module master</span>
+          <span class="tag">emergency master</span>
+        </div>
+      </section>
+
+      <!-- CIRCUIT SCREEN -->
+
+      <section id="circuit">
+
+        <div class="back" onclick="goBack()">← Back to results</div>
+
+        <div class="eyebrow">
+          EXTERIOR LIGHTING · REAR CHASSIS
+        </div>
+
+        <h1>
+          Clearance / Tail / Park Lights — Rear Tie-In
+        </h1>
+
+        <div class="location-card">
+
+          <h2>📍 Where is it?</h2>
+
+          <div class="location-photo rear-tie-photo">
+            <img
+              src="assets/rear-tie-in.jpg"
+              alt="Rear tie-in location on driver-side frame rail"
+              >
+
+            <div class="rear-tie-highlight">
+              <span>REAR TIE-IN</span>
+            </div>
+
+            <div class="photo-label">
+              DRIVER SIDE — REAR LOWER
+            </div>
+          </div>
+
+          <div class="location">
+            <strong>Driver Side — Rear Lower</strong><br><br>
+
+            Behind the fuel tank, below the rear entry doors,
+            along the driver-side frame rail.
+          </div>
+
+          <div class="identifier">
+
+            <strong>You'll know you've found it when you see:</strong>
+
+            <p>✓ Two 4-pin female connectors</p>
+            <p>✓ One wide rectangular connector</p>
+            <p>✓ All three branch from the same Ford harness</p>
+            <p>✓ No other harnesses are in this area</p>
+
+          </div>
+
+          <h2>Rear Tie-In Connection</h2>
+
+          <div class="wire-path">
+
+            <div class="wire">
+              <strong>FORD</strong><br><br>
+              18 AWG Blue/Gray<br>
+              Marker / Tail<br>
+              <strong>[OUT]</strong>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="wire">
+              <strong>MODULE</strong><br><br>
+              12 AWG Orange<br>
+              "025 Park"
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="wire">
+              <strong>WHEELED COACH BOARD</strong><br><br>
+              "025 PRK LTS"<br>
+              <strong>[IN]</strong>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="wire">
+              <strong>BOARD OUTPUT</strong><br><br>
+              "Y3 CLR LTS"<br>
+              → <a href="#r20" style="color:#075ba7; font-weight:bold;">Relay R20</a>
+            </div>
+
+          </div>
+          <hr style="margin: 35px 0; border: 0; border-top: 1px solid #d7dde2;">
+
+          <h2 id="r20">R20 — Clearance Light Relay</h2>
+
+          <p>
+            Clearance light circuit continues from
+            <strong>Y3 CLR LTS</strong> to relay R20.
+          </p>
+
+          <div class="location-photo">
+            <div class="r20-photo">
+              <img
+                src="assets/r20-closeup.jpg"
+                alt="R20 clearance light relay close-up"
+                >
+
+              <div class="r20-highlight">
+                <span>R20</span>
+              </div>
+
+              <div class="photo-label">
+                R20 — LOWER-LEFT RELAY
+              </div>
+            </div>
+          </div>
+
+          <div class="identifier">
+            <strong>⚠ Identification Note</strong>
+            <p>
+              The relay is not physically labeled "R20".
+              R20 is the <strong>lower-left relay shown above</strong>.
+            </p>
+            <p>
+              Verify the circuit using the identification markings
+              made into the wire insulation.
+            </p>
+          </div>
+
+          <h2>R20 Pinout</h2>
+
+          <div class="wire-path">
+            <div class="wire">
+              <strong>87</strong><br><br>
+              Y2 CLEAR
+            </div>
+
+            <div class="wire">
+              <strong>87a</strong><br><br>
+              Y3 CLEAR
+            </div>
+
+            <div class="wire">
+              <strong>30</strong><br><br>
+              Y37 CNRLT
+            </div>
+
+            <div class="wire">
+              <strong>86</strong><br><br>
+              GND
+            </div>
+
+            <div class="wire">
+              <strong>85</strong><br><br>
+              Y35 CNRLT
+            </div>
+          </div>
+          <p class="verified">
+            ✓ Technician Verified
+          </p>
+
+        </div>
+
+        <button type="button" class="back-to-top" onclick="window.scrollTo(0, 0)">↑ Back to top</button>
+      </section>
+      <section id="cornerCircuit" style="display:none;">
+        <div class="back" onclick="goBackFromCorner()">← Back to results</div>
+
+        <div class="eyebrow">EXTERIOR LIGHTING · CORNER CAPS</div>
+        <h1>Corner Cap Lights — Low / Flash / Sync</h1>
+
+        <div class="location-card">
+
+          <h2>Corner Cap Light Wiring</h2>
+          <p>
+            Each LED corner cap light connects to the existing module wiring
+            through four circuits.
+          </p>
+
+          <div class="location-photo">
+            <img
+              src="assets/corner-cap-wiring.png"
+              alt="LED corner cap light circuit diagram"
+              style="object-fit: contain; max-height: none; background: white;"
+              >
+            <div class="photo-label">
+              CORNER CAP CIRCUIT
+            </div>
+          </div>
+
+          <div class="wire-path">
+            <div class="wire">
+              <strong>RED</strong><br><br>
+              → Y37<br>
+              <strong>LOW</strong>
+            </div>
+
+            <div class="wire">
+              <strong>BLK</strong><br><br>
+              → BLK<br>
+              <strong>GROUND</strong>
+            </div>
+
+            <div class="wire">
+              <strong>W/P</strong><br><br>
+              → Y35<br>
+              <strong>FLASH</strong>
+            </div>
+
+            <div class="wire">
+              <strong>GRY</strong><br><br>
+              → Y39<br>
+              <strong>SYNC</strong>
+            </div>
+          </div>
+
+          <h2 style="margin-top:35px;">Flash Circuit</h2>
+
+          <div class="wire-path">
+            <div class="wire">
+              <strong>MASTER HOT</strong><br><br>
+              10A
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="wire">
+              <strong>Y34</strong>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="wire">
+              <strong>CORNER CAP LTS SWITCH</strong>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="wire">
+              <strong>Y35</strong><br><br>
+              FLASH
+            </div>
+          </div>
+
+          <h2 style="margin-top:35px;">R20 Interaction</h2>
+
+          <div class="wire-path">
+            <div class="wire"><strong>30</strong><br><br>Y37</div>
+            <div class="wire"><strong>87a</strong><br><br>Y3</div>
+            <div class="wire"><strong>87</strong><br><br>Y2</div>
+            <div class="wire"><strong>85</strong><br><br>Y35</div>
+            <div class="wire"><strong>86</strong><br><br>GND</div>
+          </div>
+
+          <div class="identifier">
+            <strong>Related Circuit</strong>
+            <p>
+              R20 also interfaces with the Clearance / Park lighting circuit.
+            </p>
+            <p>
+              <a href="#" onclick="openCircuit(); return false;"
+                style="color:#075ba7; font-weight:bold;">
+                → Open Clearance / Tail / Park Lights
+              </a>
+            </p>
+          </div>
+
+          <p class="verified">✓ Technician Verified</p>
+
+        </div>
+        <button type="button" class="back-to-top" onclick="window.scrollTo(0, 0)">↑ Back to top</button>
+      </section>
+      <section id="frontHarnessCircuit" style="display:none;">
+
+        <div class="back" onclick="goBackFromFrontHarness()">
+          ← Back to results
+        </div>
+
+        <div class="eyebrow">
+          CHASSIS WIRING · FRONT HARNESS
+        </div>
+
+        <h1>2026 ASV Type 3 — Front Harness</h1>
+
+        <p class="subtitle">
+          Cab, under-hood, floor-console and rear-module wiring reference.
+        </p>
+
+        <div class="location-card">
+
+          <h2>Cable 1 — Cab Under Hood → Floor Console</h2>
+
+          <div class="wire-path">
+
+            <div class="wire">
+              <strong>24' · YELLOW</strong><br><br>
+              Wire Label<br>
+              <strong>SPEAKER</strong>
+            </div>
+
+            <div class="wire">
+              <strong>24' · BLACK #14</strong><br><br>
+              Wire Label<br>
+              <strong>GROUND</strong>
+            </div>
+
+            <div class="wire">
+              <strong>27' · GREEN</strong><br><br>
+              Wire Label<br>
+              <strong>HORN</strong>
+            </div>
+
+            <div class="wire">
+              <strong>27' · BROWN</strong><br><br>
+              Wire Label<br>
+              <strong>RING (CHASSIS SIDE)</strong>
+            </div>
+
+            <div class="wire">
+              <strong>24' · BLACK #14</strong><br><br>
+              Wire Label<br>
+              <strong>GROUND</strong>
+            </div>
+
+            <div class="wire">
+              <strong>31' · YELLOW</strong><br><br>
+              Wire Label<br>
+              <strong>SPEAKER</strong>
+            </div>
+
+            <div class="wire">
+              <strong>31' · BLACK #14</strong><br><br>
+              Wire Label<br>
+              <strong>GROUND</strong>
+            </div>
+
+          </div>
+
+          <h2 style="margin-top:35px;">
+            Cable 2 — Cab Under Hood → Rear Module
+          </h2>
+
+          <div class="wire-path">
+
+            <div class="wire">
+              <strong>24' · YELLOW</strong><br><br>
+              Wire Label<br>
+              <strong>IGNITION — AUTO EJECT</strong>
+            </div>
+
+            <div class="wire">
+              <strong>24' · XTRA</strong><br><br>
+              Wire Label<br>
+              <strong>NOT DOCUMENTED</strong>
+            </div>
+
+            <div class="wire">
+              <strong>31' · BLUE</strong><br><br>
+              Wire Label<br>
+              <strong>A/C PRESSURE SWITCH (IN)</strong>
+            </div>
+
+            <div class="wire">
+              <strong>31' · PURPLE</strong><br><br>
+              Wire Label<br>
+              <strong>A/C CONDENSOR SIGNAL (OUT)</strong><br><br>
+              CAP IF NO CONDENSOR
+            </div>
+
+            <div class="wire">
+              <strong>23' · 18/3</strong><br><br>
+              Wire Label<br>
+              <strong>FLASHER INTERSECTION</strong><br><br>
+              USE RED &amp; WHITE ONLY
+            </div>
+
+            <div class="wire">
+              <strong>26' · 18/3</strong><br><br>
+              Wire Label<br>
+              <strong>FLASHERS GRILL INTERSECTION</strong><br><br>
+              USE RED &amp; WHITE ONLY
+            </div>
+
+            <div class="wire">
+              <strong>31' · 18/3</strong><br><br>
+              Wire Label<br>
+              <strong>FLASHER INTERSECTION</strong><br><br>
+              USE RED &amp; WHITE ONLY
+            </div>
+
+          </div>
+
+          <hr style="margin:35px 0; border:0; border-top:1px solid #d7dde2;">
+
+          <h2>Physical Layout / Routing Reference</h2>
+
+          <div class="identifier">
+            <strong>E-Series Grille &amp; Intersection</strong>
+
+            <p>
+              The rough E-Series drawing documents the physical layout
+              and routing associated with this front harness.
+            </p>
+
+            <div class="location-photo front-harness-layout">
+              <img
+                src="assets/e-series-front-harness.png"
+                alt="Original E-Series front harness drawing showing grille, intersection lights, speakers and routing notes"
+              >
+            </div>
+            <p><a href="assets/e-series-front-harness.png" target="_blank" rel="noopener"
+                style="color:#075ba7; font-weight:bold;">Open original layout scan at full size</a></p>
+          </div>
+
+          <h2 style="margin-top:35px;">Original Shop Reference</h2>
+
+          <div class="wire-path">
+
+            <div class="wire">
+              <strong>2026 ASV TYPE 3</strong><br><br>
+              Cable 1 / Cable 2 reference
+              <br><br>
+              <div class="location-photo">
+                <img src="assets/2026-asv-type3-front-harness.png"
+                  alt="Original 2026 ASV Type 3 shop reference listing Cable 1 and Cable 2 wiring"
+                  style="height:auto; max-height:none; object-fit:contain; background:white;">
+              </div>
+              <a href="assets/2026-asv-type3-front-harness.png" target="_blank" rel="noopener"
+                style="color:#075ba7; font-weight:bold;">Open original cable scan at full size</a>
+            </div>
+
+            <div class="wire">
+              <strong>E-SERIES FRONT HARNESS</strong><br><br>
+              Grille &amp; Intersection rough layout
+              <br><br>
+              <a href="assets/e-series-front-harness.png" target="_blank" rel="noopener"
+                style="color:#075ba7; font-weight:bold;">Open original layout scan at full size</a>
+            </div>
+
+          </div>
+
+          <h2 style="margin-top:35px;">Related Systems</h2>
+
+          <div class="wire-path">
+
+            <div class="wire">
+              <strong>A/C SYSTEM</strong><br><br>
+              <a href="#" onclick="openReferencePage('airConditioning'); return false;">Open A/C reference</a>
+            </div>
+
+            <div class="wire">
+              <strong>FLASHER / INTERSECTION LIGHTS</strong><br><br>
+              <a href="#" onclick="openReferencePage('flashPatterns'); return false;">Open flasher references</a>
+            </div>
+
+            <div class="wire">
+              <strong>SIREN</strong><br><br>
+              Documentation pending
+            </div>
+
+            <div class="wire">
+              <strong>HORN / RING</strong><br><br>
+              Documentation pending
+            </div>
+
+          </div>
+
+          <h2 style="margin-top:35px;">Physical Documentation</h2>
+
+          <div class="wire-path">
+
+            <div class="wire">
+              <strong>HARNESS LOCATION PHOTO</strong><br><br>
+              PHOTO NEEDED
+            </div>
+
+            <div class="wire">
+              <strong>CAB → MODULE ROUTING PHOTO</strong><br><br>
+              PHOTO NEEDED
+            </div>
+
+            <div class="wire">
+              <strong>CONNECTOR IDENTIFICATION</strong><br><br>
+              DOCUMENTATION PENDING
+            </div>
+
+          </div>
+
+          <p class="verified">
+            ✓ Shop Reference Documented
+          </p>
+
+        </div>
+
+        <button type="button" class="back-to-top" onclick="window.scrollTo(0, 0)">↑ Back to top</button>
+      </section>
+      <section id="highIdle" class="reference-page" style="display:none;">
+        <div class="back" onclick="backFromReferencePage()">← Back to results</div>
+        <div class="eyebrow">CHASSIS CONTROLS · HIGH IDLE</div>
+        <h1>High Idle — E-Series / F-Series</h1>
+        <p class="subtitle">Compare the E-Series and F-Series high-idle notes without mixing their wire assignments.</p>
+        <div class="location-card">
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <p>Quick reference transcribed from the available shop documents. Wire colors and source descriptions are kept separate from confirmed printed wire labels.</p>
+
+          <p><strong>Controller brand:</strong> InPower — confirmed by technician.</p>
+          <p><strong>Controller model:</strong> Pending identification at the shop.</p>
+
+          <h2>F-Series — High Idle</h2>
+          <div class="reference-table-scroll">
+            <table class="reference-table">
+              <thead>
+                <tr>
+                  <th scope="col">Reference wire</th>
+                  <th scope="col">Connection / note on source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Pink/White</td>
+                  <td>Brown/Blue — Park</td>
+                </tr>
+                <tr>
+                  <td>Blue</td>
+                  <td>Blue/White — PTO Relay</td>
+                </tr>
+                <tr>
+                  <td>Yellow</td>
+                  <td>Yellow/Green — PTO Req</td>
+                </tr>
+                <tr>
+                  <td>Green</td>
+                  <td>Green/White — PTO RPM</td>
+                </tr>
+                <tr>
+                  <td>Red</td>
+                  <td>Brown/Blue — Ignition Ford Harness</td>
+                </tr>
+                <tr>
+                  <td>Black</td>
+                  <td>Chassis Ground</td>
+                </tr>
+                <tr>
+                  <td>Brown</td>
+                  <td>Hi Idle switch</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>E-Series — High Idle</h2>
+          <div class="reference-table-scroll">
+            <table class="reference-table">
+              <thead>
+                <tr>
+                  <th scope="col">Reference wire</th>
+                  <th scope="col">Connection / note on source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Violet, Gray</td>
+                  <td>DO NOT USE — as written on this reference</td>
+                </tr>
+                <tr>
+                  <td>Black</td>
+                  <td>Chassis</td>
+                </tr>
+                <tr>
+                  <td>Brown</td>
+                  <td>To GND on Switch</td>
+                </tr>
+                <tr>
+                  <td>Red</td>
+                  <td>
+                    (+12V) Ignition — connect Red to Violet/Orange at the upfitter plug.
+                    The upfitter plug mates with the male plug above the gas pedal.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Blue</td>
+                  <td>Blue/White</td>
+                </tr>
+                <tr>
+                  <td>Yellow</td>
+                  <td>Next to Blue/White — Yellow/Green</td>
+                </tr>
+                <tr>
+                  <td>Green</td>
+                  <td>Green</td>
+                </tr>
+                <tr>
+                  <td>Pink</td>
+                  <td>Park — connect to chassis Gray/Brown together with the high-idle White wire.</td>
+                </tr>
+                <tr>
+                  <td>White</td>
+                  <td>Park Brake — connect to chassis Gray/Brown together with the high-idle Pink wire.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="identifier">
+            <strong>Needs technician review</strong>
+            <p><strong>Confirmed by technician:</strong> Both E-Series high-idle Pink and White wires connect to the chassis Gray/Brown wire.</p>
+            <p>
+              <strong>Confirmed by technician:</strong> The E-Series Red high-idle wire
+              connects to Violet/Orange at the upfitter plug, which mates with the
+              male plug above the gas pedal.
+            </p>
+            <p>InPower controller model number is pending identification at the shop. Chassis year and connector cavities still need confirmation.</p>
+          </div>
+
+          <h2>Original Shop References</h2>
+          <figure class="scan-reference">
+            <figcaption>High Idle — original F-Series and E-Series notes</figcaption>
+            <img src="assets/high-idle-reference.jpg" alt="High Idle — original F-Series and E-Series notes" loading="lazy">
+            <p><a href="assets/high-idle-reference.jpg" target="_blank" rel="noopener">Open original reference at full size</a></p>
+          </figure>
+
+          <h2>Related Systems</h2>
+          <div class="wire-path">
+            <div class="wire"><a href="#" onclick="openReferencePage('frontHarnessCircuit'); return false;">Front Harness</a></div>
+            <div class="wire"><a href="#" onclick="openReferencePage('wheeledCoach'); return false;">Wheeled Coach Controls</a></div>
+          </div>
+
+          <h2>Physical Documentation</h2>
+          <div class="wire-path">
+            <div class="wire"><strong>LOCATION PHOTO</strong><p>Photo needed — exact installation location pending.</p></div>
+            <div class="wire"><strong>CONNECTOR IDENTIFICATION</strong><p>Vehicle-specific connector and terminal confirmation pending.</p></div>
+            <div class="wire"><strong>TROUBLESHOOTING</strong><p>Technician-tested checks pending.</p></div>
+          </div>
+          <p class="draft-status">Source attached · Technician verification pending</p>
+        </div>
+        <button type="button" class="back-to-top" onclick="window.scrollTo(0, 0)">↑ Back to top</button>
+      </section>
+
+      <section id="popLocks" class="reference-page" style="display:none;">
+        <div class="back" onclick="backFromReferencePage()">← Back to results</div>
+        <div class="eyebrow">BODY CONTROLS · DOOR LOCKS</div>
+        <h1>Power Door Locks / PopLocks — Ford</h1>
+        <p class="subtitle">Ford lock and unlock wire references, the available relay drawing, and the annotated actuator photo.</p>
+        <div class="location-card">
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <p>Quick reference transcribed from the available shop documents. Wire colors and source descriptions are kept separate from confirmed printed wire labels.</p>
+
+          <h2>Ford Pop Locks — source mappings</h2>
+          <div class="reference-table-scroll">
+            <table class="reference-table">
+              <thead>
+                <tr>
+                  <th scope="col">Variant</th>
+                  <th scope="col">Function on source</th>
+                  <th scope="col">Wire / source note</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>F-Series</td>
+                  <td>Lock</td>
+                  <td>Yellow/Red</td>
+                </tr>
+                <tr>
+                  <td>F-Series</td>
+                  <td>Unlock</td>
+                  <td>Gray</td>
+                </tr>
+                <tr>
+                  <td>E-Series</td>
+                  <td>Lock</td>
+                  <td>Gray/Brown; adjacent note crossed out</td>
+                </tr>
+                <tr>
+                  <td>E-Series</td>
+                  <td>Unlock</td>
+                  <td>Brown/Green — Positive</td>
+                </tr>
+                <tr>
+                  <td>BCM (chassis not specified)</td>
+                  <td>Unlock</td>
+                  <td>Violet/Gray — Negative</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Annotated actuator photo</h2>
+          <div class="reference-table-scroll">
+            <table class="reference-table">
+              <thead>
+                <tr>
+                  <th scope="col">Photo annotation</th>
+                  <th scope="col">Wire color shown</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Lock Accu</td>
+                  <td>Blue</td>
+                </tr>
+                <tr>
+                  <td>UnLock Accu</td>
+                  <td>Orange</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="identifier">
+            <strong>Needs technician review</strong>
+            <p>The relay scan is marked “1 of 2.” Page 2 is not available in this workspace; the lock documentation is incomplete.</p>
+            <p>The source includes separate positive and negative notes. Confirm chassis, trigger polarity and diode direction before treating the relay sketch as an installation pinout.</p>
+            <p>The photo identifies actuator-side Blue and Orange. Its chassis and connector location are not documented here.</p>
+          </div>
+
+          <h2>Original Shop References</h2>
+          <figure class="scan-reference">
+            <figcaption>Ford Pop Locks — relay and wire reference (1 of 2)</figcaption>
+            <img src="assets/pop-locks-positive.png" alt="Ford Pop Locks — relay and wire reference (1 of 2)" loading="lazy">
+            <p><a href="assets/pop-locks-positive.png" target="_blank" rel="noopener">Open original reference at full size</a></p>
+          </figure>
+
+          <figure class="scan-reference">
+            <figcaption>Original annotated lock / unlock actuator photo</figcaption>
+            <img src="assets/pop-locks-photo.jpg" alt="Original annotated lock / unlock actuator photo" loading="lazy">
+            <p><a href="assets/pop-locks-photo.jpg" target="_blank" rel="noopener">Open original reference at full size</a></p>
+          </figure>
+
+          <h2>Related Systems</h2>
+          <div class="wire-path">
+            <div class="wire"><a href="#" onclick="openReferencePage('wheeledCoach'); return false;">Wheeled Coach Controls</a></div>
+          </div>
+
+          <h2>Physical Documentation</h2>
+          <div class="wire-path">
+            <div class="wire"><strong>LOCATION PHOTO</strong><p>Photo needed — exact installation location pending.</p></div>
+            <div class="wire"><strong>CONNECTOR IDENTIFICATION</strong><p>Vehicle-specific connector and terminal confirmation pending.</p></div>
+            <div class="wire"><strong>TROUBLESHOOTING</strong><p>Technician-tested checks pending.</p></div>
+          </div>
+          <p class="draft-status">Source attached · Technician verification pending</p>
+        </div>
+        <button type="button" class="back-to-top" onclick="window.scrollTo(0, 0)">↑ Back to top</button>
+      </section>
+
+      <section id="flashPatterns" class="reference-page" style="display:none;">
+        <div class="back" onclick="backFromReferencePage()">← Back to results</div>
+        <div class="eyebrow">EXTERIOR LIGHTING · FLASHERS</div>
+        <h1>Emergency Lights — Flash Patterns / Flasher Wiring</h1>
+        <p class="subtitle">Three separate references: InPower with one relay, Pafford light positions, and Vanner with InPower and three relays.</p>
+        <div class="location-card">
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <p>Quick reference transcribed from the available shop documents. Wire colors and source descriptions are kept separate from confirmed printed wire labels.</p>
+
+          <h2>Choose the matching reference</h2>
+          <div class="reference-table-scroll">
+            <table class="reference-table">
+              <thead>
+                <tr>
+                  <th scope="col">Variant</th>
+                  <th scope="col">What the scan documents</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>InPower / 1 relay</td>
+                  <td>Vehicle light-position sketch with A–E groups; relay note: To #1 pin on flasher OR to C stud.</td>
+                </tr>
+                <tr>
+                  <td>Pafford</td>
+                  <td>Side, front and rear light positions; front 1P / 2D program note: 10 past solid flash.</td>
+                </tr>
+                <tr>
+                  <td>Vanner + InPower / 3 relays</td>
+                  <td>Primary / Secondary arrangement; 9 PRIM YELLOW and 11 SEC YELLOW; White Grill &amp; White Wing / Red Grill &amp; Red Wing.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>VCM-08 — printed note on the three-relay scan</h2>
+          <div class="reference-table-scroll">
+            <table class="reference-table">
+              <thead>
+                <tr>
+                  <th scope="col">Reference item</th>
+                  <th scope="col">Source states</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Description</td>
+                  <td>12V Solid State Wig-Wag Flasher; dual output 15 Amp alternating flasher</td>
+                </tr>
+                <tr>
+                  <td>Enable</td>
+                  <td>Ground input on pin 87</td>
+                </tr>
+                <tr>
+                  <td>Outputs</td>
+                  <td>Pins 85 and 86 alternately flash</td>
+                </tr>
+                <tr>
+                  <td>Rate</td>
+                  <td>75 cycles per minute; 50% duty cycle</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="identifier">
+            <strong>Needs technician review</strong>
+            <p>These are separate configurations. Match the installed flasher and vehicle layout to the corresponding scan.</p>
+            <p>Some handwritten position numbers on the InPower layout are faint. Their complete transcription and the exact program-selection procedure need technician review.</p>
+            <p>VCM-08 details above are copied from the scan and have not been checked against the installed unit.</p>
+          </div>
+
+          <h2>Original Shop References</h2>
+          <figure class="scan-reference">
+            <figcaption>InPower — original single-relay light-position drawing</figcaption>
+            <img src="assets/flash-inpower.png" alt="InPower — original single-relay light-position drawing" loading="lazy">
+            <p><a href="assets/flash-inpower.png" target="_blank" rel="noopener">Open original reference at full size</a></p>
+          </figure>
+
+          <figure class="scan-reference">
+            <figcaption>Pafford — original flash-pattern layout</figcaption>
+            <img src="assets/flash-pafford.png" alt="Pafford — original flash-pattern layout" loading="lazy">
+            <p><a href="assets/flash-pafford.png" target="_blank" rel="noopener">Open original reference at full size</a></p>
+          </figure>
+
+          <figure class="scan-reference">
+            <figcaption>ASV Vanner with InPower and three relays — original wiring reference</figcaption>
+            <img src="assets/flash-vanner-inpower.png" alt="ASV Vanner with InPower and three relays — original wiring reference" loading="lazy">
+            <p><a href="assets/flash-vanner-inpower.png" target="_blank" rel="noopener">Open original reference at full size</a></p>
+          </figure>
+
+          <h2>Related Systems</h2>
+          <div class="wire-path">
+            <div class="wire"><a href="#" onclick="openReferencePage('frontHarnessCircuit'); return false;">Front Harness</a></div>
+            <div class="wire"><a href="#" onclick="openReferencePage('cornerCircuit'); return false;">Corner Cap Lights</a></div>
+          </div>
+
+          <h2>Physical Documentation</h2>
+          <div class="wire-path">
+            <div class="wire"><strong>LOCATION PHOTO</strong><p>Photo needed — exact installation location pending.</p></div>
+            <div class="wire"><strong>CONNECTOR IDENTIFICATION</strong><p>Vehicle-specific connector and terminal confirmation pending.</p></div>
+            <div class="wire"><strong>TROUBLESHOOTING</strong><p>Technician-tested checks pending.</p></div>
+          </div>
+          <p class="draft-status">Source attached · Technician verification pending</p>
+        </div>
+        <button type="button" class="back-to-top" onclick="window.scrollTo(0, 0)">↑ Back to top</button>
+      </section>
+
+      <section id="airConditioning" class="reference-page" style="display:none;">
+        <div class="back" onclick="backFromReferencePage()">← Back to results</div>
+        <div class="eyebrow">CLIMATE CONTROL · A/C</div>
+        <h1>E-Series A/C — Compressor Tap / Thermostat</h1>
+        <p class="subtitle">A/C tap, condenser and A/C relay references with the thermostat wire notes in one place.</p>
+        <div class="location-card">
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <p>Quick reference transcribed from the available shop documents. Wire colors and source descriptions are kept separate from confirmed printed wire labels.</p>
+
+          <h2>E-Series — source notes</h2>
+          <div class="reference-table-scroll">
+            <table class="reference-table">
+              <thead>
+                <tr>
+                  <th scope="col">Wire / reference</th>
+                  <th scope="col">Source description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Gray/Yellow</td>
+                  <td>A/C Tap; diode drawing</td>
+                </tr>
+                <tr>
+                  <td>Blue</td>
+                  <td>A/C output</td>
+                </tr>
+                <tr>
+                  <td>Purple</td>
+                  <td>Condenser input — handwritten note</td>
+                </tr>
+                <tr>
+                  <td>Condenser relay power</td>
+                  <td>Power 14ga</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Thermostat — wire reference</h2>
+          <div class="reference-table-scroll">
+            <table class="reference-table">
+              <thead>
+                <tr>
+                  <th scope="col">Wire color</th>
+                  <th scope="col">Function on source</th>
+                  <th scope="col">Polarity on source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Red</td>
+                  <td>Pos</td>
+                  <td>+</td>
+                </tr>
+                <tr>
+                  <td>Black</td>
+                  <td>Neg</td>
+                  <td>−</td>
+                </tr>
+                <tr>
+                  <td>Blue</td>
+                  <td>A/C</td>
+                  <td>−</td>
+                </tr>
+                <tr>
+                  <td>Green</td>
+                  <td>Heat</td>
+                  <td>−</td>
+                </tr>
+                <tr>
+                  <td>Yellow</td>
+                  <td>Low</td>
+                  <td>−</td>
+                </tr>
+                <tr>
+                  <td>Gray</td>
+                  <td>Med</td>
+                  <td>−</td>
+                </tr>
+                <tr>
+                  <td>Orange</td>
+                  <td>High</td>
+                  <td>−</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="identifier">
+            <strong>Needs technician review</strong>
+            <p>Confirm diode orientation, relay terminal assignments and vehicle applicability from the full reference and installed wiring. The additional color diagram is a cropped source photo.</p>
+          </div>
+
+          <h2>Original Shop References</h2>
+          <figure class="scan-reference">
+            <figcaption>E-Series — original A/C tap and thermostat notes</figcaption>
+            <p>The factory speaker-wire note at the top of this sheet is recorded under <a href="#" onclick="openReferencePage('miscellaneous'); return false;">Miscellaneous — Factory Speaker Wires</a>.</p>
+            <img src="assets/ac-compressor-tap.png" alt="E-Series — original A/C tap and thermostat notes" loading="lazy">
+            <p><a href="assets/ac-compressor-tap.png" target="_blank" rel="noopener">Open original reference at full size</a></p>
+          </figure>
+
+          <figure class="scan-reference">
+            <figcaption>Additional A/C / condenser / blower relay reference — partial photo</figcaption>
+            <svg viewBox="0 0 828 1792" role="img" aria-label="Additional A/C / condenser / blower relay reference — partial photo">
+              <image href="assets/ac-relay-reference.jpg" width="1792" height="828" transform="translate(0 1792) rotate(-90)" />
+            </svg>
+            <p><a href="assets/ac-relay-reference.jpg" target="_blank" rel="noopener">Open original reference at full size</a></p>
+          </figure>
+
+          <h2>Related Systems</h2>
+          <div class="wire-path">
+            <div class="wire"><a href="#" onclick="openReferencePage('frontHarnessCircuit'); return false;">Front Harness</a></div>
+            <div class="wire"><a href="#" onclick="openReferencePage('wheeledCoach'); return false;">Wheeled Coach Controls</a></div>
+          </div>
+
+          <h2>Physical Documentation</h2>
+          <div class="wire-path">
+            <div class="wire"><strong>LOCATION PHOTO</strong><p>Photo needed — exact installation location pending.</p></div>
+            <div class="wire"><strong>CONNECTOR IDENTIFICATION</strong><p>Vehicle-specific connector and terminal confirmation pending.</p></div>
+            <div class="wire"><strong>TROUBLESHOOTING</strong><p>Technician-tested checks pending.</p></div>
+          </div>
+          <p class="draft-status">Source attached · Technician verification pending</p>
+        </div>
+        <button type="button" class="back-to-top" onclick="window.scrollTo(0, 0)">↑ Back to top</button>
+      </section>
+
+      <section id="rearSignals" class="reference-page" style="display:none;">
+        <div class="back" onclick="backFromReferencePage()">← Back to results</div>
+        <div class="eyebrow">CHASSIS WIRING · REAR SIGNALS</div>
+        <h1>Rear Tie-In — Brake / Tail / Turn / Reverse</h1>
+        <p class="subtitle">E-Series and F-Series rear signal wire colors, kept separate by chassis.</p>
+        <div class="location-card">
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <p>Quick reference transcribed from the available shop documents. Wire colors and source descriptions are kept separate from confirmed printed wire labels.</p>
+
+          <h2>E-Series</h2>
+          <div class="reference-table-scroll">
+            <table class="reference-table">
+              <thead>
+                <tr>
+                  <th scope="col">Wire color</th>
+                  <th scope="col">Function on source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Blue/Gray</td>
+                  <td>Tail / Marker</td>
+                </tr>
+                <tr>
+                  <td>Brown/Blue</td>
+                  <td>Brake</td>
+                </tr>
+                <tr>
+                  <td>Green/Brown</td>
+                  <td>Reverse</td>
+                </tr>
+                <tr>
+                  <td>Green/Orange</td>
+                  <td>R Turn</td>
+                </tr>
+                <tr>
+                  <td>Gray/Orange</td>
+                  <td>L Turn</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>F-Series</h2>
+          <div class="reference-table-scroll">
+            <table class="reference-table">
+              <thead>
+                <tr>
+                  <th scope="col">Wire color</th>
+                  <th scope="col">Function on source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Blue</td>
+                  <td>Park</td>
+                </tr>
+                <tr>
+                  <td>Black/Blue</td>
+                  <td>Ground</td>
+                </tr>
+                <tr>
+                  <td>Black/Violet</td>
+                  <td>Ground — written out in the second reference</td>
+                </tr>
+                <tr>
+                  <td>Green/Blue</td>
+                  <td>Reverse</td>
+                </tr>
+                <tr>
+                  <td>Green/White</td>
+                  <td>R Turn</td>
+                </tr>
+                <tr>
+                  <td>Violet/Green</td>
+                  <td>Brake (Both)</td>
+                </tr>
+                <tr>
+                  <td>Gray/Blue</td>
+                  <td>L Turn</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="identifier">
+            <strong>Needs technician review</strong>
+            <p>Model year, connector cavities and wire gauges are not specified in these notes.</p>
+            <p>The compact F-Series scan abbreviates one ground color. The second reference writes Black/Violet; verify it on the vehicle.</p>
+          </div>
+
+          <h2>Original Shop References</h2>
+          <figure class="scan-reference">
+            <figcaption>Rear Tie-In — original E-Series / F-Series wire notes</figcaption>
+            <img src="assets/rear-tie-in-reference.png" alt="Rear Tie-In — original E-Series / F-Series wire notes" loading="lazy">
+            <p><a href="assets/rear-tie-in-reference.png" target="_blank" rel="noopener">Open original reference at full size</a></p>
+          </figure>
+
+          <figure class="scan-reference">
+            <figcaption>Additional original tail / turn / brake notes</figcaption>
+            <img src="assets/rear-tie-in-notes.jpg" alt="Additional original tail / turn / brake notes" loading="lazy">
+            <p><a href="assets/rear-tie-in-notes.jpg" target="_blank" rel="noopener">Open original reference at full size</a></p>
+          </figure>
+
+          <h2>Related Systems</h2>
+          <div class="wire-path">
+            <div class="wire"><a href="#" onclick="openReferencePage('circuit'); return false;">Clearance / Tail / Park — location and R20</a></div>
+            <div class="wire"><a href="#" onclick="openReferencePage('frontHarnessCircuit'); return false;">Front Harness</a></div>
+          </div>
+
+          <h2>Physical Documentation</h2>
+          <div class="wire-path">
+            <div class="wire"><strong>LOCATION PHOTO</strong><p>Photo needed — exact installation location pending.</p></div>
+            <div class="wire"><strong>CONNECTOR IDENTIFICATION</strong><p>Vehicle-specific connector and terminal confirmation pending.</p></div>
+            <div class="wire"><strong>TROUBLESHOOTING</strong><p>Technician-tested checks pending.</p></div>
+          </div>
+          <p class="draft-status">Source attached · Technician verification pending</p>
+        </div>
+        <button type="button" class="back-to-top" onclick="window.scrollTo(0, 0)">↑ Back to top</button>
+      </section>
+
+      <section id="timerRelay" class="reference-page" style="display:none;">
+        <div class="back" onclick="backFromReferencePage()">← Back to results</div>
+        <div class="eyebrow">INTERIOR LIGHTING · TIMER RELAY</div>
+        <h1>Timer Relay — Floor Lights</h1>
+        <p class="subtitle">Original floor-light timer relay sketch with the readable terminal references extracted for review.</p>
+        <div class="location-card">
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <p>Quick reference transcribed from the available shop documents. Wire colors and source descriptions are kept separate from confirmed printed wire labels.</p>
+
+          <h2>Timer relay sketch</h2>
+          <div class="reference-table-scroll">
+            <table class="reference-table">
+              <thead>
+                <tr>
+                  <th scope="col">Terminal / reference</th>
+                  <th scope="col">Connection shown</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>30</td>
+                  <td>Floor Lights</td>
+                </tr>
+                <tr>
+                  <td>87</td>
+                  <td>+12V</td>
+                </tr>
+                <tr>
+                  <td>87a</td>
+                  <td>Shown with no external connection drawn</td>
+                </tr>
+                <tr>
+                  <td>Left-side terminal</td>
+                  <td>Wall Sw. / Battery 12V note; terminal number needs confirmation</td>
+                </tr>
+                <tr>
+                  <td>Right-side terminal</td>
+                  <td>Ground symbol; terminal number not written</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="identifier">
+            <strong>Needs technician review</strong>
+            <p>Timer model, delay setting, trigger terminal number and operating sequence are not documented clearly enough to prescribe setup instructions.</p>
+          </div>
+
+          <h2>Original Shop References</h2>
+          <figure class="scan-reference">
+            <figcaption>Timer Relay — original floor-light wiring sketch</figcaption>
+            <img src="assets/timer-relay.png" alt="Timer Relay — original floor-light wiring sketch" loading="lazy">
+            <p><a href="assets/timer-relay.png" target="_blank" rel="noopener">Open original reference at full size</a></p>
+          </figure>
+
+          <h2>Related Systems</h2>
+          <div class="wire-path">
+            <div class="wire"><a href="#" onclick="openReferencePage('wheeledCoach'); return false;">Wheeled Coach Controls</a></div>
+          </div>
+
+          <h2>Physical Documentation</h2>
+          <div class="wire-path">
+            <div class="wire"><strong>LOCATION PHOTO</strong><p>Photo needed — exact installation location pending.</p></div>
+            <div class="wire"><strong>CONNECTOR IDENTIFICATION</strong><p>Vehicle-specific connector and terminal confirmation pending.</p></div>
+            <div class="wire"><strong>TROUBLESHOOTING</strong><p>Technician-tested checks pending.</p></div>
+          </div>
+          <p class="draft-status">Source attached · Technician verification pending</p>
+        </div>
+        <button type="button" class="back-to-top" onclick="window.scrollTo(0, 0)">↑ Back to top</button>
+      </section>
+
+      <section id="wheeledCoach" class="reference-page" style="display:none;">
+        <div class="back" onclick="backFromReferencePage()">← Back to results</div>
+        <div class="eyebrow">MODULE CONTROLS · WHEELED COACH</div>
+        <h1>Wheeled Coach — Switch Panel / Indicators</h1>
+        <p class="subtitle">Original switch-panel drawing with switch names, indicator references and Hall Effect notes.</p>
+        <div class="location-card">
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <p>Quick reference transcribed from the available shop documents. Wire colors and source descriptions are kept separate from confirmed printed wire labels.</p>
+
+          <h2>Controls identified on the drawing</h2>
+          <div class="reference-table-scroll">
+            <table class="reference-table">
+              <thead>
+                <tr>
+                  <th scope="col">Group</th>
+                  <th scope="col">Source labels / description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Upper switches</td>
+                  <td>USB; Backup Cancel; Siren Horn; Corner Lights; PRI SEC; EMER MASTER</td>
+                </tr>
+                <tr>
+                  <td>Lower switches</td>
+                  <td>Rear Heat/AC; Rear Load; Right Load; Left Load; Module Master</td>
+                </tr>
+                <tr>
+                  <td>Indicators</td>
+                  <td>Compartment / Door AJAR drawings</td>
+                </tr>
+                <tr>
+                  <td>Source note</td>
+                  <td>Even-Input / Odd-Output</td>
+                </tr>
+                <tr>
+                  <td>Lower instrument drawing</td>
+                  <td>Dim; Silence; Alarm; GND; Signal; Pos; VSense; 12V; Hall Effect</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="identifier">
+            <strong>Needs technician review</strong>
+            <p>The drawing does not identify a panel model, connector numbering or vehicle. The Even-Input / Odd-Output note is recorded only as a source note; its numbering scheme needs confirmation.</p>
+            <p>Detailed switch pinouts and Hall Effect wiring have not been transcribed because terminal identities are incomplete.</p>
+          </div>
+
+          <h2>Original Shop References</h2>
+          <figure class="scan-reference">
+            <figcaption>Wheeled Coach — original switch-panel and indicator drawing</figcaption>
+            <img src="assets/wheeled-coach-panel.jpg" alt="Wheeled Coach — original switch-panel and indicator drawing" loading="lazy">
+            <p><a href="assets/wheeled-coach-panel.jpg" target="_blank" rel="noopener">Open original reference at full size</a></p>
+          </figure>
+
+          <h2>Related Systems</h2>
+          <div class="wire-path">
+            <div class="wire"><a href="#" onclick="openReferencePage('cornerCircuit'); return false;">Corner Cap Lights</a></div>
+            <div class="wire"><a href="#" onclick="openReferencePage('airConditioning'); return false;">E-Series A/C</a></div>
+            <div class="wire"><a href="#" onclick="openReferencePage('timerRelay'); return false;">Floor-Light Timer</a></div>
+          </div>
+
+          <h2>Physical Documentation</h2>
+          <div class="wire-path">
+            <div class="wire"><strong>LOCATION PHOTO</strong><p>Photo needed — exact installation location pending.</p></div>
+            <div class="wire"><strong>CONNECTOR IDENTIFICATION</strong><p>Vehicle-specific connector and terminal confirmation pending.</p></div>
+            <div class="wire"><strong>TROUBLESHOOTING</strong><p>Technician-tested checks pending.</p></div>
+          </div>
+          <p class="draft-status">Source attached · Technician verification pending</p>
+        </div>
+        <button type="button" class="back-to-top" onclick="window.scrollTo(0, 0)">↑ Back to top</button>
+      </section>
+      <section id="miscellaneous" class="reference-page" style="display:none;">
+        <div class="back" onclick="backFromReferencePage()">← Back to results</div>
+        <div class="eyebrow">MISCELLANEOUS · E-SERIES</div>
+        <h1>Miscellaneous — Factory Speaker Wires</h1>
+        <p class="subtitle">Factory speaker-wire colors and polarity recorded in the shop reference.</p>
+        <div class="location-card">
+          <p class="draft-status">Draft — Technician Review Pending</p>
+          <h2>E-Series — Factory Speaker Wires</h2>
+          <div class="reference-table-scroll">
+            <table class="reference-table">
+              <thead>
+                <tr>
+                  <th scope="col">Wire Color</th>
+                  <th scope="col">Polarity on source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>White/Violet</td>
+                  <td>+ (Positive)</td>
+                </tr>
+                <tr>
+                  <td>White/Orange</td>
+                  <td>− (Negative)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="identifier">
+            <strong>Needs technician review</strong>
+            <p>Model year, speaker location and connector identification are pending confirmation.</p>
+          </div>
+          <h2>Original Shop Reference</h2>
+          <figure class="scan-reference">
+            <figcaption>Factory Speaker Wires — note at the top of the original E-Series sheet</figcaption>
+            <img src="assets/ac-compressor-tap.png" alt="Original E-Series sheet with factory speaker-wire colors and polarity at the top" loading="lazy">
+            <p><a href="assets/ac-compressor-tap.png" target="_blank" rel="noopener">Open original reference at full size</a></p>
+          </figure>
+          <p class="draft-status">Source attached · Technician verification pending</p>
+        </div>
+        <button type="button" class="back-to-top" onclick="window.scrollTo(0, 0)">↑ Back to top</button>
+      </section>
+    </main>
+
+    <script>
+      function searchAtlas() {
+        const query = document.getElementById("searchBox").value.toLowerCase().trim();
+        searchReferencePages(query);
+
+        const browseCircuits = document.getElementById("browseCircuits");
+
+        if (query.length > 0) {
+          browseCircuits.style.display = "none";
+        } else {
+          browseCircuits.style.display = "block";
+        }
+
+        const result = document.getElementById("result");
+
+        const cornerResult = document.getElementById("cornerResult");
+
+        const aliases = [
+          "clearance",
+          "tail",
+          "tail lights",
+          "park",
+          "park lights",
+          "marker",
+          "marker lights",
+          "025",
+          "025 park"
+        ];
+
+        if (
+          query.length > 0 &&
+          aliases.some(term => term.includes(query) || query.includes(term))
+        ) {
+          result.style.display = "block";
+        } else {
+          result.style.display = "none";
+        }
+
+        const cornerAliases = [
+          "corner",
+          "corner cap",
+          "corner caps",
+          "corner light",
+          "corner lights",
+          "flash",
+          "y35",
+          "y37",
+          "y39"
+        ];
+
+        if (
+          query.length > 0 &&
+          cornerAliases.some(term => term.includes(query) || query.includes(term))
+        ) {
+          cornerResult.style.display = "block";
+        } else {
+          cornerResult.style.display = "none";
+        }
+        const frontHarnessResult = document.getElementById("frontHarnessResult");
+
+        const frontHarnessAliases = [
+          "front harness",
+          "e series",
+          "e-series",
+          "type 3",
+          "2026 asv",
+          "under hood",
+          "speaker",
+          "horn",
+          "ring",
+          "auto eject",
+          "ignition",
+          "a/c pressure",
+          "ac pressure",
+          "condensor",
+          "flasher",
+          "intersection",
+          "grill"
+        ];
+
+        if (
+          query.length > 0 &&
+          frontHarnessAliases.some(
+            term => term.includes(query) || query.includes(term)
+          )
+        ) {
+          frontHarnessResult.style.display = "block";
+        } else {
+          frontHarnessResult.style.display = "none";
+        }
+      }
+
+      function openCircuit() {
+        hideReferencePages();
+        document.getElementById("frontHarnessCircuit").style.display = "none";
+        document.getElementById("cornerCircuit").style.display = "none";
+        document.getElementById("searchScreen").style.display = "none";
+
+        document.getElementById("circuit").style.display = "block";
+
+        window.scrollTo(0, 0);
+      }
+
+      function goBack() {
+        document.getElementById("circuit").style.display = "none";
+
+        document.getElementById("searchScreen").style.display = "block";
+
+        window.scrollTo(0, 0);
+      }
+
+      function openCornerCircuit() {
+        hideReferencePages();
+        document.getElementById("frontHarnessCircuit").style.display = "none";
+        document.getElementById("searchScreen").style.display = "none";
+        document.getElementById("circuit").style.display = "none";
+        document.getElementById("cornerCircuit").style.display = "block";
+        window.scrollTo(0, 0);
+      }
+
+      function goBackFromCorner() {
+        document.getElementById("cornerCircuit").style.display = "none";
+        document.getElementById("searchScreen").style.display = "block";
+        window.scrollTo(0, 0);
+      }
+
+      function openFrontHarness() {
+        hideReferencePages();
+        document.getElementById("frontHarnessCircuit").style.display = "none";
+        document.getElementById("searchScreen").style.display = "none";
+        document.getElementById("circuit").style.display = "none";
+        document.getElementById("cornerCircuit").style.display = "none";
+        document.getElementById("frontHarnessCircuit").style.display = "block";
+
+        window.scrollTo(0, 0);
+      }
+
+      function goBackFromFrontHarness() {
+        document.getElementById("frontHarnessCircuit").style.display = "none";
+        document.getElementById("searchScreen").style.display = "block";
+
+        window.scrollTo(0, 0);
+      }
+
+      // New scan pages share navigation; existing circuit content is preserved.
+      const referencePages = [
+        {
+          "id": "miscellaneous",
+          "aliases": [
+            "misc",
+            "miscellaneous",
+            "factory speaker",
+            "factory speaker wires",
+            "speaker",
+            "speaker wires",
+            "white/violet",
+            "white violet",
+            "white/orange",
+            "white orange"
+          ]
+        },
+        {
+          "id": "highIdle",
+          "aliases": [
+            "high idle",
+            "hi idle",
+            "hi-idle",
+            "pto",
+            "pto req",
+            "pto rpm",
+            "park brake",
+            "e-series high idle",
+            "f-series high idle"
+          ]
+        },
+        {
+          "id": "popLocks",
+          "aliases": [
+            "poplocks",
+            "pop locks",
+            "pop lock",
+            "door locks",
+            "unlock",
+            "lock actuator",
+            "yellow/red",
+            "gray/brown",
+            "violet/gray",
+            "bcm"
+          ]
+        },
+        {
+          "id": "flashPatterns",
+          "aliases": [
+            "flash pattern",
+            "flasher",
+            "emergency lights",
+            "inpower",
+            "in power",
+            "vanner",
+            "pafford",
+            "wig wag",
+            "wig-wag",
+            "vcm-08",
+            "primary",
+            "secondary",
+            "intersection",
+            "grille"
+          ]
+        },
+        {
+          "id": "airConditioning",
+          "aliases": [
+            "a/c",
+            "ac compressor",
+            "air conditioning",
+            "compressor tap",
+            "thermostat",
+            "condenser",
+            "condensor",
+            "gray/yellow",
+            "rear heat",
+            "blower"
+          ]
+        },
+        {
+          "id": "rearSignals",
+          "aliases": [
+            "rear tie in",
+            "rear tie-in",
+            "brake",
+            "tail",
+            "turn",
+            "reverse",
+            "backup",
+            "back up",
+            "stop lights",
+            "green/orange",
+            "violet/green"
+          ]
+        },
+        {
+          "id": "timerRelay",
+          "aliases": [
+            "timer",
+            "timer relay",
+            "floor lights",
+            "floor lighting",
+            "wall switch",
+            "delay"
+          ]
+        },
+        {
+          "id": "wheeledCoach",
+          "aliases": [
+            "wheeled coach",
+            "switch panel",
+            "module master",
+            "emergency master",
+            "backup cancel",
+            "door ajar",
+            "compartment ajar",
+            "hall effect",
+            "rear load",
+            "right load",
+            "left load",
+            "usb"
+          ]
+        }
+      ];
+
+      function searchReferencePages(query) {
+        referencePages.forEach(page => {
+          const matches = query.length > 0 && page.aliases.some(
+            term => term.includes(query) || query.includes(term)
+          );
+          document.getElementById(page.id + "Result").style.display = matches ? "block" : "none";
+        });
+      }
+
+      function hideReferencePages() {
+        referencePages.forEach(page => {
+          document.getElementById(page.id).style.display = "none";
+        });
+      }
+
+      function openReferencePage(id) {
+        hideReferencePages();
+        ["searchScreen", "circuit", "cornerCircuit", "frontHarnessCircuit"].forEach(pageId => {
+          document.getElementById(pageId).style.display = "none";
+        });
+        document.getElementById(id).style.display = "block";
+        window.scrollTo(0, 0);
+      }
+
+      function backFromReferencePage() {
+        hideReferencePages();
+        document.getElementById("searchScreen").style.display = "block";
+        window.scrollTo(0, 0);
+      }
+    </script>
+
+  </body>
+</html>
